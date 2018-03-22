@@ -10,19 +10,23 @@ import UIKit
 
 var LangIdent = "Русский"
 var ThemeIdent = "Светлая"
+var SettingIdentifier = ["Русский", "Светлая"]
 
 class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let TableViewElements = ["Красная площадь","Площадь памяти","Обжорный ряд"]
-    var SettingsDict = ["Язык":["Русский","English"],"Тема":["Светлая","Темная"]]
+    var TableViewElements = ["Язык","Тема"]
+    var SettingLang = ["Русский","English"]
+    var SettingTheme = ["Светлая","Темная"]
+    var SettingDict = [1: ["Русский","English"], 2: ["Светлая","Темная"]]
+    let cellIdentifier = "CustomTableViewCell"
 
     @IBOutlet weak var tableView: UITableView!
-    //var but:String!
-    
+
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.register(UINib.init(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+
         super.viewDidLoad()
     }
     
@@ -32,11 +36,9 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "settingCell")
-        
-        cell.textLabel?.text = TableViewElements[indexPath.row]
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomTableViewCell
+        cell.settingLbl?.text = TableViewElements[indexPath.row]
+        cell.secondSettingLbl?.text = SettingIdentifier[indexPath.row]
         return cell
     }
 

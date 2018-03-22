@@ -10,15 +10,16 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var settingLbl: UILabel!
+    @IBOutlet weak var settingImg: UIImageView!
+    @IBOutlet weak var secondSettingLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

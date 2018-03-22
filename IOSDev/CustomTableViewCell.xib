@@ -12,34 +12,60 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingsCell" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="IOSDev" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="IOSDev" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LO-DI-dP2">
-                        <rect key="frame" x="10" y="10" width="260" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LO-DI-dP2">
+                        <rect key="frame" x="10" y="17" width="44" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="153" id="1l2-jr-eio"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1l2-jr-eio"/>
+                            </mask>
+                        </variation>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="settingsArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4lA-T3-jay">
-                        <rect key="frame" x="286" y="10" width="24" height="24"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingsArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4lA-T3-jay">
+                        <rect key="frame" x="294" y="21" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="a4b-rg-Qdm"/>
+                            <constraint firstAttribute="width" constant="16" id="eeQ-nu-Xwl"/>
+                        </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su5-H7-9pB">
+                        <rect key="frame" x="253" y="17" width="31" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="4lA-T3-jay" firstAttribute="leading" secondItem="Su5-H7-9pB" secondAttribute="trailing" constant="10" id="AAI-tI-ED5"/>
                     <constraint firstAttribute="trailing" secondItem="4lA-T3-jay" secondAttribute="trailing" constant="10" id="BYH-3f-a0N"/>
-                    <constraint firstItem="4lA-T3-jay" firstAttribute="leading" secondItem="3LO-DI-dP2" secondAttribute="trailing" constant="10" id="HEE-MP-oTg"/>
-                    <constraint firstAttribute="bottom" secondItem="3LO-DI-dP2" secondAttribute="bottom" constant="10" id="M9s-AF-gwq"/>
-                    <constraint firstItem="3LO-DI-dP2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ano-z7-icM"/>
-                    <constraint firstAttribute="bottom" secondItem="4lA-T3-jay" secondAttribute="bottom" constant="10" id="nOK-rh-iWb"/>
+                    <constraint firstItem="Su5-H7-9pB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="G1L-zM-4Ea"/>
+                    <constraint firstAttribute="bottom" secondItem="3LO-DI-dP2" secondAttribute="bottom" constant="17" id="IVL-0b-BY9"/>
+                    <constraint firstItem="3LO-DI-dP2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="ano-z7-icM"/>
+                    <constraint firstAttribute="bottom" secondItem="4lA-T3-jay" secondAttribute="bottom" constant="21" id="nOK-rh-iWb"/>
                     <constraint firstItem="3LO-DI-dP2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="uS3-sW-V8Y"/>
-                    <constraint firstItem="4lA-T3-jay" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="yyu-ff-GLX"/>
+                    <constraint firstAttribute="bottom" secondItem="Su5-H7-9pB" secondAttribute="bottom" constant="17" id="yKq-5q-itd"/>
+                    <constraint firstItem="4lA-T3-jay" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="yyu-ff-GLX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="secondSettingLbl" destination="Su5-H7-9pB" id="92C-04-cQY"/>
+                <outlet property="settingImg" destination="4lA-T3-jay" id="nMm-RN-oUl"/>
+                <outlet property="settingLbl" destination="3LO-DI-dP2" id="v7V-cu-UL3"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="58"/>
         </tableViewCell>
     </objects>
     <resources>
