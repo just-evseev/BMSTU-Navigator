@@ -18,6 +18,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)

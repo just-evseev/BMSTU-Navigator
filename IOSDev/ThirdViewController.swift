@@ -9,6 +9,7 @@
 import UIKit
 
 var SettingIdentifier = ["Русский", "Светлая"]
+var myIndex = 0
 
 class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -27,6 +28,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
     }
     
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "segue", sender: self)
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return TableViewElements.count
     }
@@ -39,6 +45,5 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
         
     }
-
    
 }

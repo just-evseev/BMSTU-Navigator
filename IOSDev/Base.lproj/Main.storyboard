@@ -134,6 +134,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="2gR-RO-EhJ"/>
                     <connections>
                         <outlet property="tableView" destination="77Q-ZS-2qa" id="ODm-S3-joV"/>
+                        <segue destination="rtd-jp-MDH" kind="show" identifier="segue" id="xai-a6-BI4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1S-m5-D1h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,6 +163,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BR8-e7-hHQ"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="CTy-ZU-mhw" id="Ieu-pR-1fQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXh-QB-0PB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
