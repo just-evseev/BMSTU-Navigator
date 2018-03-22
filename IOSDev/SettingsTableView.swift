@@ -1,5 +1,5 @@
 //
-//  ThirdViewController.swift
+//  SettingsTableView.swift
 //  IOSDev
 //
 //  Created by Илья on 22.03.2018.
@@ -8,37 +8,34 @@
 
 import UIKit
 
-var SettingIdentifier = ["Русский", "Светлая"]
-
-class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // ЭТО ВЬЮХА С НАСТРОЙКАМИ К КОТОРЫЙ Я ПРИЦЕПИЛ КАСТОМНУЮ ЯЧЕЙКУ
+    //ЭТО ПОЧТИ ВСЛЕПУЮ СКОПИРОВАННАЯ ПРОШЛАЯ ВЬЮХА КОТОРАЯ ПОИДЕЕ ПРОДОЛЖАЕТ НАСТРОЙКИ
     
-    var TableViewElements = ["Язык","Тема"]
-    let cellIdentifier = "CustomTableViewCell"
-
+    var SettingDict = [1: ["Русский","English"], 2: ["Светлая","Темная"]]
+    let cellIdentifier = "SettingTableViewCell"
+    
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib.init(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-
+        tableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        
         super.viewDidLoad()
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return TableViewElements.count
+        return 2
     }
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomTableViewCell
-        cell.settingLbl?.text = TableViewElements[indexPath.row]
-        cell.secondSettingLbl?.text = SettingIdentifier[indexPath.row]
+        //cell.settingLbl?.text = TableViewElements[indexPath.row]
         return cell
         
     }
-
-   
+    
+    
 }

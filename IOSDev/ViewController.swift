@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController{
 
+    @IBOutlet weak var BmstuLogo: UIImageView!
+    @IBOutlet weak var ButtonPressed: UIButton!
+    
+    //тут будет наша анимация уплывания лого и появления кнопки
     
     override func viewDidLoad() {
         super.viewDidLoad()

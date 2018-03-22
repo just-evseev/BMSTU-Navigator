@@ -9,7 +9,7 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-    
+    //тут будет наша менюха с выбором места
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!

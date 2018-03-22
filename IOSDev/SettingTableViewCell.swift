@@ -1,5 +1,5 @@
 //
-//  CustomTableViewCell.swift
+//  SettingTableViewCell.swift
 //  IOSDev
 //
 //  Created by Илья on 22.03.2018.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class SettingTableViewCell: UITableViewCell {
 
+    //ЭТО КАСТОМНАЯ ЯЧЕЙКА ДЛЯ ВНУТРЕННОСТИ КАЖДОЙ НАСТРОЙКИ
     
-    //ЭТО КАСТОМНАЯ ЯЧЕЙКА ТАБЛИЦЫ НАСТРОЕК
-    
-    @IBOutlet weak var settingLbl: UILabel!
-    @IBOutlet weak var settingImg: UIImageView!
-    @IBOutlet weak var secondSettingLbl: UILabel!
+    @IBOutlet weak var settingsLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
 }
