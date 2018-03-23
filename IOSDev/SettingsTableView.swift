@@ -12,7 +12,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //ЭТО ПОЧТИ ВСЛЕПУЮ СКОПИРОВАННАЯ ПРОШЛАЯ ВЬЮХА КОТОРАЯ ПОИДЕЕ ПРОДОЛЖАЕТ НАСТРОЙКИ
     
-    var SettingDict = [1: ["Русский","English"], 2: ["Светлая","Темная"]]
+    var SettingDict = [["Русский","English"], ["Светлая","Темная"]]
     let cellIdentifier = "SettingTableViewCell"
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,8 +32,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomTableViewCell
-        //cell.settingLbl?.text = TableViewElements[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SettingTableViewCell
+        cell.settingsLbl?.text = SettingDict[myIndex][indexPath.row]
         return cell
         
     }
