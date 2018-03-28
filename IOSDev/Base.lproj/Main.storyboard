@@ -37,13 +37,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ne sex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64Y-tp-UBi">
-                                <rect key="frame" x="149" y="272" width="72" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="axm-yl-TUe"/>
@@ -201,20 +194,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpI-G7-VQz">
-                                <rect key="frame" x="164" y="578" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="ekB-yR-xzR" kind="show" id="iON-BJ-zov"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f16-aG-p0A">
                                 <rect key="frame" x="47" y="193" width="280" height="280"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="RpI-G7-VQz" firstAttribute="top" secondItem="f16-aG-p0A" secondAttribute="bottom" constant="105" id="3US-cN-ccF"/>
+                            <constraint firstItem="ZJV-kG-oIH" firstAttribute="bottom" secondItem="f16-aG-p0A" secondAttribute="bottom" constant="194" id="81u-dE-LOb"/>
                             <constraint firstItem="ZJV-kG-oIH" firstAttribute="trailing" secondItem="f16-aG-p0A" secondAttribute="trailing" constant="48" id="8kN-Cf-hhc"/>
                             <constraint firstItem="f16-aG-p0A" firstAttribute="leading" secondItem="ZJV-kG-oIH" secondAttribute="leading" constant="47" id="ZyL-2l-r8T"/>
                             <constraint firstItem="f16-aG-p0A" firstAttribute="top" secondItem="ZJV-kG-oIH" secondAttribute="top" constant="173" id="lD1-57-QaK"/>
@@ -223,9 +209,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZJV-kG-oIH"/>
                     </view>
-                    <connections>
-                        <outlet property="ButtonPressed" destination="RpI-G7-VQz" id="dS2-yK-Qht"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5l5-gc-3rN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
