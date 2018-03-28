@@ -17,6 +17,7 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logoAnimate()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -25,6 +26,19 @@ class ViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
 
+    func logoAnimate() {
+        BmstuLogo.isHidden = false
+        
+        UIView.animate(withDuration: 2.0, animations: {
+            self.BmstuLogo.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
+            //self.BmstuLogo.alpha = 0.0
+        }) { _ in
+            UIView.animate(withDuration: 1.0) {
+                self.BmstuLogo.alpha = 0.5
+                //self.BmstuLogo.transform = CGAffineTransform.init(rotationAngle: .pi/2)
+            }
+        }
+    }
 
 }
 
