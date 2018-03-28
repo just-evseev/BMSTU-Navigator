@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,6 +37,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ne sex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64Y-tp-UBi">
+                                <rect key="frame" x="149" y="272" width="72" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="axm-yl-TUe"/>
@@ -51,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h40-iU-TEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="591" y="-501"/>
+            <point key="canvasLocation" x="589.60000000000002" y="-501.49925037481262"/>
         </scene>
         <!--Title-->
         <scene sceneID="J0T-Mg-fqs">
@@ -195,32 +201,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gerb_MGTU_imeni_Baumana" translatesAutoresizingMaskIntoConstraints="NO" id="s67-wX-SLw">
-                                <rect key="frame" x="21" y="166" width="334" height="334"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="s67-wX-SLw" secondAttribute="height" multiplier="1:1" id="xtQ-fj-mVA"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpI-G7-VQz">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpI-G7-VQz">
                                 <rect key="frame" x="164" y="578" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="ekB-yR-xzR" kind="show" id="iON-BJ-zov"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f16-aG-p0A">
+                                <rect key="frame" x="47" y="193" width="280" height="280"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="s67-wX-SLw" firstAttribute="centerX" secondItem="i2k-5H-SIg" secondAttribute="centerX" id="0ol-5V-COn"/>
-                            <constraint firstItem="ZJV-kG-oIH" firstAttribute="trailing" secondItem="s67-wX-SLw" secondAttribute="trailing" constant="20" id="6a7-E1-T2z"/>
-                            <constraint firstItem="s67-wX-SLw" firstAttribute="leading" secondItem="ZJV-kG-oIH" secondAttribute="leading" constant="21" id="rn0-hH-tCu"/>
-                            <constraint firstItem="s67-wX-SLw" firstAttribute="centerY" secondItem="i2k-5H-SIg" secondAttribute="centerY" id="vkC-bn-l0V"/>
+                            <constraint firstItem="RpI-G7-VQz" firstAttribute="top" secondItem="f16-aG-p0A" secondAttribute="bottom" constant="105" id="3US-cN-ccF"/>
+                            <constraint firstItem="ZJV-kG-oIH" firstAttribute="trailing" secondItem="f16-aG-p0A" secondAttribute="trailing" constant="48" id="8kN-Cf-hhc"/>
+                            <constraint firstItem="f16-aG-p0A" firstAttribute="leading" secondItem="ZJV-kG-oIH" secondAttribute="leading" constant="47" id="ZyL-2l-r8T"/>
+                            <constraint firstItem="f16-aG-p0A" firstAttribute="top" secondItem="ZJV-kG-oIH" secondAttribute="top" constant="173" id="lD1-57-QaK"/>
+                            <constraint firstItem="f16-aG-p0A" firstAttribute="centerX" secondItem="i2k-5H-SIg" secondAttribute="centerX" id="mNj-tT-wuf"/>
+                            <constraint firstItem="f16-aG-p0A" firstAttribute="centerY" secondItem="i2k-5H-SIg" secondAttribute="centerY" id="sx4-aK-faP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZJV-kG-oIH"/>
                     </view>
                     <connections>
-                        <outlet property="BmstuLogo" destination="s67-wX-SLw" id="TEf-Hj-3Op"/>
                         <outlet property="ButtonPressed" destination="RpI-G7-VQz" id="dS2-yK-Qht"/>
                     </connections>
                 </viewController>
@@ -248,7 +251,4 @@
             <point key="canvasLocation" x="-1634" y="-134"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Gerb_MGTU_imeni_Baumana" width="1000" height="1180"/>
-    </resources>
 </document>

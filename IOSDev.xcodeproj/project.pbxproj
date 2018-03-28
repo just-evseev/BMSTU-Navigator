@@ -13,6 +13,7 @@
 		048D952F206308FF009A9D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048D952E206308FF009A9D39 /* Assets.xcassets */; };
 		048D9532206308FF009A9D39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048D9530206308FF009A9D39 /* LaunchScreen.storyboard */; };
 		048D953A20630951009A9D39 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D953920630951009A9D39 /* SecondViewController.swift */; };
+		0490A629206BE977004F7B37 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490A628206BE977004F7B37 /* LogoView.swift */; };
 		04C5F15020637635003530B7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5F14F20637635003530B7 /* ThirdViewController.swift */; };
 		04C5F1652063C3BA003530B7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5F1632063C3BA003530B7 /* CustomTableViewCell.swift */; };
 		04C5F1662063C3BA003530B7 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */; };
@@ -30,6 +31,7 @@
 		048D9531206308FF009A9D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		048D9533206308FF009A9D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		048D953920630951009A9D39 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		0490A628206BE977004F7B37 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		04C5F14F20637635003530B7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		04C5F1632063C3BA003530B7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */,
 				04EAF3AB2063EDBF00D2C9A3 /* SettingTableViewCell.swift */,
 				04EAF3AC2063EDBF00D2C9A3 /* SettingTableViewCell.xib */,
+				0490A628206BE977004F7B37 /* LogoView.swift */,
 			);
 			path = IOSDev;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				04EAF3AD2063EDBF00D2C9A3 /* SettingTableViewCell.swift in Sources */,
 				048D952A206308FF009A9D39 /* ViewController.swift in Sources */,
 				04C5F15020637635003530B7 /* ThirdViewController.swift in Sources */,
+				0490A629206BE977004F7B37 /* LogoView.swift in Sources */,
 				04EAF3AA2063ED1C00D2C9A3 /* SettingsTableView.swift in Sources */,
 				048D9528206308FF009A9D39 /* AppDelegate.swift in Sources */,
 			);

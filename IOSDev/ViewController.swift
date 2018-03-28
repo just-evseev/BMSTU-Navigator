@@ -17,7 +17,8 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logoAnimate()
+        self.ButtonPressed.alpha = 0.0
+       // logoAnimate()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -27,15 +28,16 @@ class ViewController: UIViewController{
     }
 
     func logoAnimate() {
-        BmstuLogo.isHidden = false
-        
+        //BmstuLogo.isHidden = false
+
         UIView.animate(withDuration: 2.0, animations: {
-            self.BmstuLogo.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
+            self.BmstuLogo.constraints
+            //self.BmstuLogo.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
             //self.BmstuLogo.alpha = 0.0
         }) { _ in
-            UIView.animate(withDuration: 1.0) {
-                self.BmstuLogo.alpha = 0.5
-                //self.BmstuLogo.transform = CGAffineTransform.init(rotationAngle: .pi/2)
+            UIView.animate(withDuration: 0.5) {
+                self.ButtonPressed.alpha = 1.0
+//                self.BmstuLogo.transform = CGAffineTransform.init(rotationAngle: .pi/2)
             }
         }
     }
