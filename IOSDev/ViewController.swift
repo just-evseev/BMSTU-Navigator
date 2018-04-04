@@ -17,16 +17,18 @@ class ViewController: UIViewController{
     func logoAnimate() {
         BmstuLogo.isHidden = false
         
-        UIView.animate(withDuration: 5.0, animations: {
-            self.HeightConstraintOutlet.constant = 100
+        UIView.animate(withDuration: 4.0, animations: {
+//            self.HeightConstraintOutlet.constant = 100
+            self.BmstuLogo.frame = CGRect(x: 67.5, y: 30, width: 240, height: 240)
         }) { _ in
-            UIView.animate(withDuration: 0.5) {
-                self.ButtonPressed.alpha = 1
+            UIView.animate(withDuration: 1.0) {
+                self.ButtonPressed.alpha = 1.0
             }
         }
     }
     
     override func viewDidLoad() {
+        self.ButtonPressed.alpha = 0.0
         logoAnimate()
         super.viewDidLoad()
         
