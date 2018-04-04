@@ -1,8 +1,8 @@
 //
-//  SettingsTableView.swift
+//  SettingViewController.swift
 //  IOSDev
 //
-//  Created by Илья on 22.03.2018.
+//  Created by Илья on 04.04.2018.
 //  Copyright © 2018 Ilya. All rights reserved.
 //
 
@@ -10,12 +10,9 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //ЭТО ПОЧТИ ВСЛЕПУЮ СКОПИРОВАННАЯ ПРОШЛАЯ ВЬЮХА КОТОРАЯ ПОИДЕЕ ПРОДОЛЖАЕТ НАСТРОЙКИ
-    
+    @IBOutlet weak var tableView: UITableView!
     var SettingDict = [["Русский","English"], ["Светлая","Темная"]]
     let cellIdentifier = "SettingTableViewCell"
-    
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         
@@ -27,7 +24,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 2
+        return SettingDict[myIndex].count
     }
     
     @available(iOS 2.0, *)
@@ -36,8 +33,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SettingTableViewCell
         cell.settingsLbl?.text = SettingDict[myIndex][indexPath.row]
         return cell
+        //return
         
     }
-    
-    
 }

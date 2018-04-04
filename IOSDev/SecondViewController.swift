@@ -7,11 +7,24 @@
 //
 
 import UIKit
+var numberAud: String = ""
+var numberFloat: Int = 1
 
 class SecondViewController: UIViewController {
     //тут будет наша менюха с выбором места
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!
+    @IBAction func ButtonPressed(_ sender: UIButton) {
+        numberAud = textField.text!
+        if numberAud != "" {
+            numberFloat = Int(numberAud)!/100
+            performSegue(withIdentifier: "segueToMap", sender: self)
+        } else {
+            label.text = "error"
+        }
+    }
+    
+    
     
 }
