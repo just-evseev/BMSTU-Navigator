@@ -10,5 +10,9 @@ import UIKit
 
 class LibraryMapViewController: UIViewController {
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
 }

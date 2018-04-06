@@ -75,6 +75,9 @@
                                             <constraint firstAttribute="width" constant="30" id="g77-YW-6B8"/>
                                         </constraints>
                                         <state key="normal" title="M"/>
+                                        <connections>
+                                            <segue destination="vwO-nx-sXS" kind="show" id="WAS-PH-uyd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,35 +143,135 @@
             </objects>
             <point key="canvasLocation" x="-2026" y="-134"/>
         </scene>
-        <!--View Controller-->
+        <!--Все аудитории-->
         <scene sceneID="DiV-i3-PRo">
             <objects>
                 <viewController id="1qR-XU-Rdt" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iIz-nk-rl8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYG-u8-f7K">
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTJ-vb-RAz">
+                                        <rect key="frame" x="8" y="8" width="175" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="XXk-gy-Ura"/>
+                                            <constraint firstAttribute="width" constant="175.5" id="m30-jv-JVV"/>
+                                        </constraints>
+                                        <state key="normal" title="Аудитории"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcK-G9-f6B">
+                                        <rect key="frame" x="191" y="8" width="176" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Te6-4w-NIq"/>
+                                            <constraint firstAttribute="width" constant="175.5" id="pBf-zU-I1q"/>
+                                        </constraints>
+                                        <state key="normal" title="Популярные места"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="5XC-mM-Aj0"/>
+                                    <constraint firstItem="LcK-G9-f6B" firstAttribute="top" secondItem="KYG-u8-f7K" secondAttribute="top" constant="8" id="Lt3-Nl-R4h"/>
+                                    <constraint firstAttribute="bottom" secondItem="LcK-G9-f6B" secondAttribute="bottom" constant="8" id="OsT-bq-NHU"/>
+                                    <constraint firstItem="GTJ-vb-RAz" firstAttribute="top" secondItem="KYG-u8-f7K" secondAttribute="top" constant="8" id="WGM-f2-Mhx"/>
+                                    <constraint firstAttribute="trailing" secondItem="LcK-G9-f6B" secondAttribute="trailing" constant="8" id="kNh-2Q-nbT"/>
+                                    <constraint firstItem="GTJ-vb-RAz" firstAttribute="leading" secondItem="KYG-u8-f7K" secondAttribute="leading" constant="8" id="oVt-Va-FRQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="GTJ-vb-RAz" secondAttribute="bottom" constant="8" id="yWX-xy-Gwk"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfh-nB-aGB">
+                                <rect key="frame" x="0.0" y="621" width="375" height="46"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gt-qR-iwN">
+                                        <rect key="frame" x="314" y="8" width="61" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="История"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lH6-3h-fXP">
+                                        <rect key="frame" x="147" y="8" width="80" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Избранное"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6V-fQ-tiY">
+                                        <rect key="frame" x="8" y="8" width="107" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Все аудитории"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="K1L-Wn-2zw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pfh-nB-aGB" firstAttribute="leading" secondItem="JuQ-4W-d3K" secondAttribute="leading" id="H4R-eu-zGG"/>
+                            <constraint firstItem="KYG-u8-f7K" firstAttribute="leading" secondItem="JuQ-4W-d3K" secondAttribute="leading" id="KfB-bp-i6h"/>
+                            <constraint firstItem="KYG-u8-f7K" firstAttribute="top" secondItem="JuQ-4W-d3K" secondAttribute="top" id="ThS-b5-9aU"/>
+                            <constraint firstItem="pfh-nB-aGB" firstAttribute="bottom" secondItem="JuQ-4W-d3K" secondAttribute="bottom" id="dgq-xg-4o1"/>
+                            <constraint firstItem="JuQ-4W-d3K" firstAttribute="trailing" secondItem="pfh-nB-aGB" secondAttribute="trailing" id="qJL-uS-rbl"/>
+                            <constraint firstItem="KYG-u8-f7K" firstAttribute="trailing" secondItem="JuQ-4W-d3K" secondAttribute="trailing" id="u6r-sa-8Dx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JuQ-4W-d3K"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Все аудитории" id="vZH-mb-QKd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rr2-7k-IPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-182" y="142"/>
+            <point key="canvasLocation" x="-183.19999999999999" y="141.67916041979012"/>
         </scene>
-        <!--View Controller-->
+        <!--Ввод аудитории-->
         <scene sceneID="bSP-Xn-Asy">
             <objects>
                 <viewController id="vwO-nx-sXS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3UB-ow-0r1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnP-e8-IbF">
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uy3-DF-IcT">
+                                        <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="kcs-WH-UF8"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TtH-08-i8o">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wRc-ix-7KW" firstAttribute="trailing" secondItem="TtH-08-i8o" secondAttribute="trailing" id="8eN-rx-X2L"/>
+                            <constraint firstItem="SnP-e8-IbF" firstAttribute="top" secondItem="wRc-ix-7KW" secondAttribute="top" id="Clo-mv-4WN"/>
+                            <constraint firstItem="SnP-e8-IbF" firstAttribute="leading" secondItem="wRc-ix-7KW" secondAttribute="leading" id="HGy-no-QII"/>
+                            <constraint firstItem="wRc-ix-7KW" firstAttribute="bottom" secondItem="TtH-08-i8o" secondAttribute="bottom" id="S36-qo-6CG"/>
+                            <constraint firstItem="SnP-e8-IbF" firstAttribute="trailing" secondItem="wRc-ix-7KW" secondAttribute="trailing" id="lk9-Tg-ZWI"/>
+                            <constraint firstItem="TtH-08-i8o" firstAttribute="leading" secondItem="wRc-ix-7KW" secondAttribute="leading" id="pzZ-du-j8Z"/>
+                            <constraint firstItem="TtH-08-i8o" firstAttribute="top" secondItem="SnP-e8-IbF" secondAttribute="bottom" id="qOD-YP-HkR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wRc-ix-7KW"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Ввод аудитории" id="geT-mT-4Kg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WK3-No-Nd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="-533"/>
+            <point key="canvasLocation" x="-183.19999999999999" y="-533.88305847076469"/>
         </scene>
         <!--Item-->
         <scene sceneID="WoI-Sa-rPc">
@@ -283,4 +386,7 @@
     <resources>
         <image name="Gerb_MGTU_imeni_Baumana" width="1000" height="1180"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gLo-No-ngF"/>
+    </inferredMetricsTieBreakers>
 </document>

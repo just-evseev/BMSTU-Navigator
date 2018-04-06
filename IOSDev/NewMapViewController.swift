@@ -38,7 +38,7 @@ class NewMapViewController: UIViewController {
         
         WhereFromTextField.isUserInteractionEnabled = true
         WhereTextField.isUserInteractionEnabled = true
-
+        
         view.addSubview(UpView)
         MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
         UpView.superview?.bringSubview(toFront: UpView)
@@ -48,7 +48,7 @@ class NewMapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,10 +61,5 @@ class NewMapViewController: UIViewController {
         }
 
     }
-    
-//    func back(sender: UIBarButtonItem) {
-//
-//        self.navigationController?.(true)
-//    }
     
 }
