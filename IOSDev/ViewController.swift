@@ -15,13 +15,12 @@ class ViewController: UIViewController{
     @IBOutlet weak var ButtonPressed: UIButton!
     
     func logoAnimate() {
-        BmstuLogo.isHidden = false
         
-        UIView.animate(withDuration: 4.0, animations: {
-//            self.HeightConstraintOutlet.constant = 100
+        BmstuLogo.isHidden = false
+        UIView.animate(withDuration: 2.0, animations: {
             self.BmstuLogo.frame = CGRect(x: 67.5, y: 30, width: 240, height: 240)
         }) { _ in
-            UIView.animate(withDuration: 1.0) {
+            UIView.animate(withDuration: 0.5) {
                 self.ButtonPressed.alpha = 1.0
             }
         }
@@ -37,8 +36,6 @@ class ViewController: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-   
 
 }
 
