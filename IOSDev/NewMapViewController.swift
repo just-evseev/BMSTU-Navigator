@@ -8,6 +8,8 @@
 
 import UIKit
 
+var numberFloat: Int = 1
+
 class NewMapViewController: UIViewController {
     
     @IBOutlet weak var MapImageView: UIImageView!
