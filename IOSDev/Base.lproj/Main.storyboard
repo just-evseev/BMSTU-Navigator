@@ -14,7 +14,7 @@
         <!--Item-->
         <scene sceneID="fsT-6U-neD">
             <objects>
-                <viewController id="CMc-gY-mPS" customClass="NewMapViewController" customModule="IOSDev" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CMc-gY-mPS" customClass="MapViewController" customModule="IOSDev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KfJ-fa-POJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
         <!--Все аудитории-->
         <scene sceneID="DiV-i3-PRo">
             <objects>
-                <viewController id="1qR-XU-Rdt" sceneMemberID="viewController">
+                <viewController id="1qR-XU-Rdt" customClass="LibraryMapViewController" customModule="IOSDev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iIz-nk-rl8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,6 +238,9 @@
                         <viewLayoutGuide key="safeArea" id="JuQ-4W-d3K"/>
                     </view>
                     <navigationItem key="navigationItem" title="Все аудитории" id="vZH-mb-QKd"/>
+                    <connections>
+                        <outlet property="tableView" destination="uwH-a0-oe0" id="n1P-4I-o3e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rr2-7k-IPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -246,7 +249,7 @@
         <!--Ввод аудитории-->
         <scene sceneID="bSP-Xn-Asy">
             <objects>
-                <viewController id="vwO-nx-sXS" sceneMemberID="viewController">
+                <viewController id="vwO-nx-sXS" customClass="EditMapTextViewController" customModule="IOSDev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3UB-ow-0r1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

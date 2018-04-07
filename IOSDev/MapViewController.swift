@@ -10,7 +10,7 @@ import UIKit
 
 var numberFloat: Int = 1
 
-class NewMapViewController: UIViewController {
+class MapViewController: UIViewController {
     
     @IBOutlet weak var MapImageView: UIImageView!
     @IBOutlet weak var UpView: UIView!
@@ -24,7 +24,7 @@ class NewMapViewController: UIViewController {
         
         WhereTextField.isUserInteractionEnabled = false
         performSegue(withIdentifier: "inputValueSegue", sender: self)
-        
+
     }
     
     @IBAction func WhereFromTextFieldPressed (_ sender: Any) {
