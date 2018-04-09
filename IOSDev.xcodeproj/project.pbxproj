@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04709AE12077398D00D43416 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE02077398D00D43416 /* MapViewController.swift */; };
+		04709AE12077398D00D43416 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE02077398D00D43416 /* MainViewController.swift */; };
 		04709AE320776DC100D43416 /* LibraryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE220776DC000D43416 /* LibraryMapViewController.swift */; };
 		04709AE520776E1100D43416 /* EditMapTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE420776E1100D43416 /* EditMapTextViewController.swift */; };
 		04709AE72078D72F00D43416 /* AudCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE62078D72F00D43416 /* AudCellModel.swift */; };
@@ -16,8 +16,8 @@
 		048D952D206308FF009A9D39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048D952B206308FF009A9D39 /* Main.storyboard */; };
 		048D952F206308FF009A9D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048D952E206308FF009A9D39 /* Assets.xcassets */; };
 		048D9532206308FF009A9D39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048D9530206308FF009A9D39 /* LaunchScreen.storyboard */; };
-		04AA1A7F20752A78002AABA9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA1A7E20752A78002AABA9 /* SettingViewController.swift */; };
-		04C5F15020637635003530B7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5F14F20637635003530B7 /* ThirdViewController.swift */; };
+		04AA1A7F20752A78002AABA9 /* SecSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA1A7E20752A78002AABA9 /* SecSettingViewController.swift */; };
+		04C5F15020637635003530B7 /* FirSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5F14F20637635003530B7 /* FirSettingViewController.swift */; };
 		04C5F1652063C3BA003530B7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5F1632063C3BA003530B7 /* CustomTableViewCell.swift */; };
 		04C5F1662063C3BA003530B7 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */; };
 		04EAF3AD2063EDBF00D2C9A3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EAF3AB2063EDBF00D2C9A3 /* SettingTableViewCell.swift */; };
@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04709AE02077398D00D43416 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		04709AE02077398D00D43416 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		04709AE220776DC000D43416 /* LibraryMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryMapViewController.swift; sourceTree = "<group>"; };
 		04709AE420776E1100D43416 /* EditMapTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMapTextViewController.swift; sourceTree = "<group>"; };
 		04709AE62078D72F00D43416 /* AudCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudCellModel.swift; sourceTree = "<group>"; };
@@ -36,8 +36,8 @@
 		048D952E206308FF009A9D39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		048D9531206308FF009A9D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		048D9533206308FF009A9D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04AA1A7E20752A78002AABA9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		04C5F14F20637635003530B7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		04AA1A7E20752A78002AABA9 /* SecSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecSettingViewController.swift; sourceTree = "<group>"; };
+		04C5F14F20637635003530B7 /* FirSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirSettingViewController.swift; sourceTree = "<group>"; };
 		04C5F1632063C3BA003530B7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		04EAF3AB2063EDBF00D2C9A3 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -76,11 +76,11 @@
 			children = (
 				048D9527206308FF009A9D39 /* AppDelegate.swift */,
 				048D9529206308FF009A9D39 /* ViewController.swift */,
-				04C5F14F20637635003530B7 /* ThirdViewController.swift */,
-				04AA1A7E20752A78002AABA9 /* SettingViewController.swift */,
-				04709AE02077398D00D43416 /* MapViewController.swift */,
-				04709AE220776DC000D43416 /* LibraryMapViewController.swift */,
+				04709AE02077398D00D43416 /* MainViewController.swift */,
 				04709AE420776E1100D43416 /* EditMapTextViewController.swift */,
+				04709AE220776DC000D43416 /* LibraryMapViewController.swift */,
+				04C5F14F20637635003530B7 /* FirSettingViewController.swift */,
+				04AA1A7E20752A78002AABA9 /* SecSettingViewController.swift */,
 				04709AE62078D72F00D43416 /* AudCellModel.swift */,
 				048D952B206308FF009A9D39 /* Main.storyboard */,
 				048D952E206308FF009A9D39 /* Assets.xcassets */,
@@ -171,12 +171,12 @@
 				04C5F1652063C3BA003530B7 /* CustomTableViewCell.swift in Sources */,
 				04EAF3AD2063EDBF00D2C9A3 /* SettingTableViewCell.swift in Sources */,
 				04709AE320776DC100D43416 /* LibraryMapViewController.swift in Sources */,
-				04709AE12077398D00D43416 /* MapViewController.swift in Sources */,
+				04709AE12077398D00D43416 /* MainViewController.swift in Sources */,
 				04709AE72078D72F00D43416 /* AudCellModel.swift in Sources */,
 				04709AE520776E1100D43416 /* EditMapTextViewController.swift in Sources */,
 				048D952A206308FF009A9D39 /* ViewController.swift in Sources */,
-				04C5F15020637635003530B7 /* ThirdViewController.swift in Sources */,
-				04AA1A7F20752A78002AABA9 /* SettingViewController.swift in Sources */,
+				04C5F15020637635003530B7 /* FirSettingViewController.swift in Sources */,
+				04AA1A7F20752A78002AABA9 /* SecSettingViewController.swift in Sources */,
 				048D9528206308FF009A9D39 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

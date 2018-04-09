@@ -19,17 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8cs-vw-UtF">
-                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZ6-VK-kIx">
-                                <rect key="frame" x="315" y="617" width="42" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="настр"/>
-                                <connections>
-                                    <segue destination="S9e-pu-35f" kind="show" id="7dy-O8-ksj"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1d-7V-x6A">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
@@ -80,7 +69,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="dss-TA-2qo" secondAttribute="trailing" constant="8" id="9iZ-WB-fxi"/>
                                     <constraint firstItem="O62-Ok-4aa" firstAttribute="top" secondItem="q1d-7V-x6A" secondAttribute="top" constant="42" id="Em1-QF-WXg"/>
@@ -97,24 +86,47 @@
                                     <constraint firstItem="dss-TA-2qo" firstAttribute="top" secondItem="q1d-7V-x6A" secondAttribute="top" constant="42" id="z3I-P7-CgP"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umt-vd-HPz">
+                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssM-Jv-dK4">
+                                        <rect key="frame" x="329" y="543" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Sett"/>
+                                        <connections>
+                                            <segue destination="S9e-pu-35f" kind="show" id="lmS-8R-ULQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsk-VW-IpY">
+                                        <rect key="frame" x="16" y="543" width="40" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Share"/>
+                                        <connections>
+                                            <action selector="ShareMapButtonPressed:" destination="CMc-gY-mPS" eventType="touchUpInside" id="BaP-y5-mHz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="q1d-7V-x6A" firstAttribute="trailing" secondItem="vCq-zv-VNu" secondAttribute="trailing" id="0HR-W7-ReM"/>
-                            <constraint firstItem="8cs-vw-UtF" firstAttribute="trailing" secondItem="vCq-zv-VNu" secondAttribute="trailing" id="Hch-TE-BER"/>
-                            <constraint firstItem="q1d-7V-x6A" firstAttribute="top" secondItem="KfJ-fa-POJ" secondAttribute="top" id="V8c-dc-aXm"/>
-                            <constraint firstItem="q1d-7V-x6A" firstAttribute="leading" secondItem="vCq-zv-VNu" secondAttribute="leading" id="Vkq-qF-Fgz"/>
-                            <constraint firstItem="8cs-vw-UtF" firstAttribute="top" secondItem="q1d-7V-x6A" secondAttribute="bottom" id="byK-3L-nzR"/>
-                            <constraint firstItem="8cs-vw-UtF" firstAttribute="leading" secondItem="vCq-zv-VNu" secondAttribute="leading" id="hy4-td-BX2"/>
-                            <constraint firstItem="8cs-vw-UtF" firstAttribute="bottom" secondItem="vCq-zv-VNu" secondAttribute="bottom" id="quO-nq-Z2v"/>
+                            <constraint firstItem="q1d-7V-x6A" firstAttribute="trailing" secondItem="vCq-zv-VNu" secondAttribute="trailing" id="1z2-ir-pzF"/>
+                            <constraint firstItem="umt-vd-HPz" firstAttribute="trailing" secondItem="vCq-zv-VNu" secondAttribute="trailing" id="2ZS-6b-GXF"/>
+                            <constraint firstItem="umt-vd-HPz" firstAttribute="top" secondItem="q1d-7V-x6A" secondAttribute="bottom" id="DVs-dA-unN"/>
+                            <constraint firstItem="umt-vd-HPz" firstAttribute="bottom" secondItem="vCq-zv-VNu" secondAttribute="bottom" id="FSR-uF-aaW"/>
+                            <constraint firstItem="umt-vd-HPz" firstAttribute="leading" secondItem="vCq-zv-VNu" secondAttribute="leading" id="Kx8-so-Sb3"/>
+                            <constraint firstItem="q1d-7V-x6A" firstAttribute="top" secondItem="KfJ-fa-POJ" secondAttribute="top" id="cvp-UG-h6l"/>
+                            <constraint firstItem="q1d-7V-x6A" firstAttribute="leading" secondItem="vCq-zv-VNu" secondAttribute="leading" id="fIG-sZ-io7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vCq-zv-VNu"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="HTM-f4-Deg"/>
                     <navigationItem key="navigationItem" id="Jjo-Qa-Fo6"/>
                     <connections>
-                        <outlet property="MapImageView" destination="8cs-vw-UtF" id="q7i-el-X7R"/>
-                        <outlet property="SettingButton" destination="hZ6-VK-kIx" id="meP-fj-AkH"/>
+                        <outlet property="MapImageView" destination="umt-vd-HPz" id="MnF-vR-qv0"/>
+                        <outlet property="MapScrollView" destination="umt-vd-HPz" id="Raf-4L-Qb5"/>
+                        <outlet property="SettingButton" destination="ssM-Jv-dK4" id="wnw-Qg-zxm"/>
+                        <outlet property="ShareMapButton" destination="dsk-VW-IpY" id="wMq-xD-R4B"/>
                         <outlet property="UpView" destination="q1d-7V-x6A" id="qgs-JU-fOA"/>
                         <outlet property="WhereDictionButton" destination="M9S-90-ubW" id="Pui-Sw-rAN"/>
                         <outlet property="WhereFromDictionButton" destination="O62-Ok-4aa" id="fx3-ZL-B2l"/>
@@ -125,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hun-Vp-Tqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1190" y="-134"/>
+            <point key="canvasLocation" x="-1191.2" y="-134.48275862068968"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1wU-te-gHj">
@@ -364,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXh-QB-0PB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1233" y="779"/>
+            <point key="canvasLocation" x="-1266" y="779"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ap8-LS-46X">

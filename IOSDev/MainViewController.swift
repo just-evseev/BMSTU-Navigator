@@ -10,15 +10,19 @@ import UIKit
 
 var numberFloat: Int = 1
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var MapImageView: UIImageView!
+    @IBOutlet weak var ShareMapButton: UIButton!
+    @IBOutlet weak var MapScrollView: UIScrollView!
     @IBOutlet weak var UpView: UIView!
     @IBOutlet weak var WhereFromTextField: UITextField!
     @IBOutlet weak var WhereTextField: UITextField!
     @IBOutlet weak var WhereDictionButton: UIButton!
     @IBOutlet weak var WhereFromDictionButton: UIButton!
     @IBOutlet weak var SettingButton: UIButton!
+    
+    var ChangableFloatNumber:Int = numberFloat
+    var MapImageView = UIImageView()
 
     @IBAction func WhereTextFiledPressed(_ sender: Any) {
         
@@ -34,18 +38,27 @@ class MapViewController: UIViewController {
         
     }
     
-    var ChangableFloatNumber:Int = numberFloat
+    @IBAction func ShareMapButtonPressed(_ sender: UIButton) {
+        
+        
+    }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         WhereFromTextField.isUserInteractionEnabled = true
         WhereTextField.isUserInteractionEnabled = true
         
-        view.addSubview(UpView)
+        MapScrollView.delegate = self
+        //MapImageView.frame = CGRect(0, 0, MapScrollView.frame.size.width, MapScrollView.frame.size.height)
+        MapImageView.frame = CGRect(x: 0, y: 0, width: MapScrollView.frame.size.width, height: MapScrollView.frame.size.height)
         MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
-        UpView.superview?.bringSubview(toFront: UpView)
+        MapImageView.isUserInteractionEnabled = true
+        MapScrollView.addSubview(MapImageView)
         
-        super.viewDidLoad()
+        view.addSubview(UpView)
+        //MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
+        UpView.superview?.bringSubview(toFront: UpView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
