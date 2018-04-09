@@ -12,17 +12,20 @@ var numberFloat: Int = 1
 
 class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var ShareMapButton: UIButton!
+    
     @IBOutlet weak var MapScrollView: UIScrollView!
+    @IBOutlet weak var MapImageView: UIImageView!
+    @IBOutlet weak var SettingButton: UIButton!
+    @IBOutlet weak var ShareMapButton: UIButton!
     @IBOutlet weak var UpView: UIView!
     @IBOutlet weak var WhereFromTextField: UITextField!
     @IBOutlet weak var WhereTextField: UITextField!
     @IBOutlet weak var WhereDictionButton: UIButton!
     @IBOutlet weak var WhereFromDictionButton: UIButton!
-    @IBOutlet weak var SettingButton: UIButton!
+
     
     var ChangableFloatNumber:Int = numberFloat
-    var MapImageView = UIImageView()
+//    var MapImageView = UIImageView()
 
     @IBAction func WhereTextFiledPressed(_ sender: Any) {
         
@@ -38,10 +41,15 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         
     }
     
-    @IBAction func ShareMapButtonPressed(_ sender: UIButton) {
+    @IBAction func ShareButtonPressed(_ sender: Any) {
         
         
     }
+    
+    //    @IBAction func ShareMapButtonPressed(_ sender: UIButton) {
+//
+//
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +58,14 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         WhereTextField.isUserInteractionEnabled = true
         
         MapScrollView.delegate = self
-        //MapImageView.frame = CGRect(0, 0, MapScrollView.frame.size.width, MapScrollView.frame.size.height)
+//        MapImageView.frame = CGRect(0, 0, MapScrollView.frame.size.width, MapScrollView.frame.size.height)
         MapImageView.frame = CGRect(x: 0, y: 0, width: MapScrollView.frame.size.width, height: MapScrollView.frame.size.height)
         MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
         MapImageView.isUserInteractionEnabled = true
         MapScrollView.addSubview(MapImageView)
         
         view.addSubview(UpView)
-        //MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
+        MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
         UpView.superview?.bringSubview(toFront: UpView)
     }
     
