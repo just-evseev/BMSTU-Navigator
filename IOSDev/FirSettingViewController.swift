@@ -23,6 +23,15 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
 
+        switch SettingIdentifier[0] {
+        case "Русский":
+            TableViewElements = ["Язык","Тема"]
+        case "English":
+            TableViewElements = ["Language","Theme"]
+        default:
+            TableViewElements = ["Язык","Тема"]
+        }
+        
         super.viewDidLoad()
     }
     

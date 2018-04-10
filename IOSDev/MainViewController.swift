@@ -10,6 +10,9 @@ import UIKit
 
 var numberFloat: Int = 1
 
+var modelArray = [AudCellModel]()
+var popPlaceArray = [AudCellModel]()
+
 class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
@@ -24,6 +27,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     @IBOutlet weak var WhereFromDictionButton: UIButton!
 
     var ChangableFloatNumber:Int = numberFloat
+    var arrayOfMysor = ["Красная площадь","Обжорный ряд","У ноги","Дом Физики","Метро","Фонтан"]
     
     @IBAction func WhereTextFiledPressed(_ sender: Any) {
         
@@ -32,15 +36,30 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
 
     }
     
+    func fillModelArray() {
+        for j in 1...11 {
+            for i in (j*100)...(j*100+35) {
+                let model = AudCellModel()
+                model.title = "\(i)ю"
+                modelArray.append(model)
+            }
+            for i in (j*100+36)...(j*100+57) {
+                let model = AudCellModel()
+                model.title = "\(i)"
+                modelArray.append(model)
+            }
+        }
+        for keks in arrayOfMysor {
+            let model = AudCellModel()
+            model.title = keks
+            popPlaceArray.append(model)
+        }
+    }
+    
     @IBAction func WhereFromTextFieldPressed (_ sender: Any) {
         
         WhereFromTextField.isUserInteractionEnabled = false
         performSegue(withIdentifier: "inputValueSegue", sender: self)
-        
-    }
-    
-    @IBAction func ShareButtonPressed(_ sender: Any) {
-        
         
     }
     
@@ -61,6 +80,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         view.addSubview(UpView)
         MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
         UpView.superview?.bringSubview(toFront: UpView)
+        
+        fillModelArray()
     }
     
     override func viewWillAppear(_ animated: Bool) {

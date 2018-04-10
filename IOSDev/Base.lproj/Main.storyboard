@@ -136,6 +136,8 @@
                     <connections>
                         <outlet property="MapImageView" destination="r8A-0O-vcw" id="Qwp-el-cam"/>
                         <outlet property="MapScrollView" destination="q9X-cj-dbQ" id="aT2-oV-kC3"/>
+                        <outlet property="SettingButton" destination="MHw-eB-YwP" id="miO-nH-TVW"/>
+                        <outlet property="ShareMapButton" destination="ZSH-1p-F6i" id="cMW-2B-DUY"/>
                         <outlet property="UpView" destination="q1d-7V-x6A" id="qgs-JU-fOA"/>
                         <outlet property="WhereDictionButton" destination="M9S-90-ubW" id="Pui-Sw-rAN"/>
                         <outlet property="WhereFromDictionButton" destination="O62-Ok-4aa" id="fx3-ZL-B2l"/>
@@ -177,12 +179,15 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTJ-vb-RAz">
                                         <rect key="frame" x="8" y="8" width="178.5" height="30"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="0.48378638698630139" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="XXk-gy-Ura"/>
                                             <constraint firstAttribute="width" constant="178" id="m30-jv-JVV"/>
                                         </constraints>
                                         <state key="normal" title="Аудитории"/>
+                                        <connections>
+                                            <action selector="AudButtonPressed:" destination="1qR-XU-Rdt" eventType="touchUpInside" id="iAa-oZ-dPc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcK-G9-f6B">
                                         <rect key="frame" x="188.5" y="8" width="178.5" height="30"/>
@@ -192,6 +197,9 @@
                                             <constraint firstAttribute="width" constant="178" id="pBf-zU-I1q"/>
                                         </constraints>
                                         <state key="normal" title="Популярные места"/>
+                                        <connections>
+                                            <action selector="popPlaceButtonPressed:" destination="1qR-XU-Rdt" eventType="touchUpInside" id="yZW-Ki-Vy9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -260,6 +268,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Все аудитории" id="vZH-mb-QKd"/>
                     <connections>
+                        <outlet property="AudButton" destination="GTJ-vb-RAz" id="zie-81-3GH"/>
+                        <outlet property="DownView" destination="pfh-nB-aGB" id="ZVA-ys-yrh"/>
+                        <outlet property="PopPlaceButton" destination="LcK-G9-f6B" id="nuz-PU-azF"/>
+                        <outlet property="allButton" destination="a6V-fQ-tiY" id="vFS-xO-2Kd"/>
+                        <outlet property="favoritesButton" destination="lH6-3h-fXP" id="9iv-iz-fNo"/>
+                        <outlet property="historyButton" destination="9gt-qR-iwN" id="TFN-fm-eju"/>
                         <outlet property="tableView" destination="uwH-a0-oe0" id="n1P-4I-o3e"/>
                     </connections>
                 </viewController>
@@ -284,6 +298,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="TextFieldValueChanged:" destination="vwO-nx-sXS" eventType="valueChanged" id="vvU-2O-2Le"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -309,6 +326,11 @@
                         <viewLayoutGuide key="safeArea" id="wRc-ix-7KW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ввод аудитории" id="geT-mT-4Kg"/>
+                    <connections>
+                        <outlet property="NumbAudTextField" destination="Uy3-DF-IcT" id="iHh-Dr-0Rk"/>
+                        <outlet property="tipsTableView" destination="TtH-08-i8o" id="bn1-cO-iSg"/>
+                        <outlet property="upView" destination="SnP-e8-IbF" id="Yrc-y6-6TE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WK3-No-Nd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -22,6 +22,15 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         
+        switch SettingIdentifier[0] {
+        case "Русский":
+            SettingDict = [["Русский","English"], ["Светлая","Темная"]]
+        case "English":
+            SettingDict = [["Русский","English"], ["Light","Dark"]]
+        default:
+            SettingDict = [["Русский","English"], ["Светлая","Темная"]]
+        }
+        
         super.viewDidLoad()
     }
     
@@ -46,21 +55,29 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 0:
                 SettingIdentifier[0] = "Русский"
             case 1:
-                SettingIdentifier[0] = "Английский"
+                SettingIdentifier[0] = "English"
             default:
-                SettingIdentifier[0] = "X3"
+                SettingIdentifier[0] = "Ошибка 200"
             }
         case 1:
             switch mySecIndex {
             case 0:
-                SettingIdentifier[1] = "Светлая"
+                if SettingIdentifier[0] == "Русский" {
+                    SettingIdentifier[1] = "Светлая"
+                } else {
+                    SettingIdentifier[1] = "Light"
+                }
             case 1:
-                SettingIdentifier[1] = "Темная"
+                if SettingIdentifier[0] == "Русский" {
+                    SettingIdentifier[1] = "Темная"
+                } else {
+                    SettingIdentifier[1] = "Dark"
+                }
             default:
-                SettingIdentifier[1] = "X3"
+                SettingIdentifier[1] = "Ошибка 201"
             }
         default:
-            SettingIdentifier[1] = "X3цук"
+            SettingIdentifier[1] = "Ошибка 202"
         }
     }
     

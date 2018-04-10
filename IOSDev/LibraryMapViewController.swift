@@ -10,50 +10,52 @@ import UIKit
 
 class LibraryMapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var DownView: UIView!
+    @IBOutlet weak var historyButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIButton!
+    @IBOutlet weak var allButton: UIButton!
+    @IBOutlet weak var AudButton: UIButton!
+    @IBOutlet weak var PopPlaceButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "SettingTableViewCell"
-    var modelArray = [AudCellModel]()
+    var newModelArray = [AudCellModel]()
 
+    
+    
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        fillModelArray()
+        newModelArray = modelArray
         
         super.viewDidLoad()
-
     }
     
-    func fillModelArray() {
-        for i in 200...235 {
-            let model = AudCellModel()
-            model.title = "\(i)"
-            modelArray.append(model)
-        }
-        for i in 236...257 {
-            let model = AudCellModel()
-            model.title = "\(i)ю"
-            modelArray.append(model)
-        }
+    @IBAction func popPlaceButtonPressed(_ sender: Any) {
+        newModelArray = popPlaceArray
+        self.tableView.reloadData()
+        PopPlaceButton.backgroundColor = UIColor(red: 245/255, green: 244/255, blue: 180/255, alpha: 1)
+        AudButton.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func AudButtonPressed(_ sender: UIButton) {
+        newModelArray = modelArray
+        self.tableView.reloadData()
+        AudButton.backgroundColor = UIColor(red: 245/255, green: 244/255, blue: 180/255, alpha: 1)
+        PopPlaceButton.backgroundColor = UIColor.white
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return modelArray.count
+            return newModelArray.count
     }
     
-    
     @available(iOS 2.0, *)
-//    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SettingTableViewCell
-//        cell.settingsLbl?.text = SettingDict[myIndex][indexPath.row]
-//        return cell
-//        return
-//
-//    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = modelArray[indexPath.row]
+        let model = newModelArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         if let castedCell = cell as? SettingTableViewCell {
             castedCell.fillCell(with: model)
