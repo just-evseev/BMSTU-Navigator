@@ -12,9 +12,7 @@ var SettingIdentifier = ["Русский", "Светлая"]
 var myIndex = 0
 
 class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    // ЭТО ВЬЮХА С НАСТРОЙКАМИ К КОТОРЫЙ Я ПРИЦЕПИЛ КАСТОМНУЮ ЯЧЕЙКУ
-    
+
     var TableViewElements = ["Язык","Тема"]
     let cellIdentifier = "CustomTableViewCell"
 

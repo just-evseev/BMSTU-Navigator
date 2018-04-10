@@ -23,10 +23,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     @IBOutlet weak var WhereDictionButton: UIButton!
     @IBOutlet weak var WhereFromDictionButton: UIButton!
 
-    
     var ChangableFloatNumber:Int = numberFloat
-//    var MapImageView = UIImageView()
-
+    
     @IBAction func WhereTextFiledPressed(_ sender: Any) {
         
         WhereTextField.isUserInteractionEnabled = false
@@ -46,19 +44,15 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         
     }
     
-    //    @IBAction func ShareMapButtonPressed(_ sender: UIButton) {
-//
-//
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         WhereFromTextField.isUserInteractionEnabled = true
         WhereTextField.isUserInteractionEnabled = true
         
+        self.MapScrollView.minimumZoomScale = 1.0
+        self.MapScrollView.maximumZoomScale = 6.0
         MapScrollView.delegate = self
-//        MapImageView.frame = CGRect(0, 0, MapScrollView.frame.size.width, MapScrollView.frame.size.height)
         MapImageView.frame = CGRect(x: 0, y: 0, width: MapScrollView.frame.size.width, height: MapScrollView.frame.size.height)
         MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
         MapImageView.isUserInteractionEnabled = true
@@ -83,6 +77,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             WhereTextField.isUserInteractionEnabled = true
         }
 
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.MapImageView
     }
     
 }

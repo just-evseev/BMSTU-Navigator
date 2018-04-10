@@ -8,6 +8,8 @@
 
 import UIKit
 
+var mySecIndex = 0
+
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,7 +35,34 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SettingTableViewCell
         cell.settingsLbl?.text = SettingDict[myIndex][indexPath.row]
         return cell
-        //return
         
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mySecIndex = indexPath.row
+        switch myIndex {
+        case 0:
+            switch mySecIndex {
+            case 0:
+                SettingIdentifier[0] = "Русский"
+            case 1:
+                SettingIdentifier[0] = "Английский"
+            default:
+                SettingIdentifier[0] = "X3"
+            }
+        case 1:
+            switch mySecIndex {
+            case 0:
+                SettingIdentifier[1] = "Светлая"
+            case 1:
+                SettingIdentifier[1] = "Темная"
+            default:
+                SettingIdentifier[1] = "X3"
+            }
+        default:
+            SettingIdentifier[1] = "X3цук"
+        }
+    }
+    
+    //надо добавить переход назад при выборе какой-либо настройки
 }
