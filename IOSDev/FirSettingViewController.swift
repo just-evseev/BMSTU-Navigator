@@ -12,9 +12,7 @@ var SettingIdentifier = ["Русский", "Светлая"]
 var myIndex = 0
 
 class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    // ЭТО ВЬЮХА С НАСТРОЙКАМИ К КОТОРЫЙ Я ПРИЦЕПИЛ КАСТОМНУЮ ЯЧЕЙКУ
-    
+
     var TableViewElements = ["Язык","Тема"]
     let cellIdentifier = "CustomTableViewCell"
 
@@ -25,7 +23,31 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
 
+        switch SettingIdentifier[0] {
+        case "Русский":
+            TableViewElements = ["Язык","Тема"]
+        case "English":
+            TableViewElements = ["Language","Theme"]
+        default:
+            TableViewElements = ["Язык","Тема"]
+        }
+        
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+
+        switch SettingIdentifier[0] {
+        case "Русский":
+            TableViewElements = ["Язык","Тема"]
+        case "English":
+            TableViewElements = ["Language","Theme"]
+        default:
+            TableViewElements = ["Язык","Тема"]
+        }
+        tableView.reloadData()
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
