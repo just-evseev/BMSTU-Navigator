@@ -35,6 +35,21 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+
+        switch SettingIdentifier[0] {
+        case "Русский":
+            TableViewElements = ["Язык","Тема"]
+        case "English":
+            TableViewElements = ["Language","Theme"]
+        default:
+            TableViewElements = ["Язык","Тема"]
+        }
+        tableView.reloadData()
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
         performSegue(withIdentifier: "segue", sender: self)

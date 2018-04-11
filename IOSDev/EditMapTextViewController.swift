@@ -9,6 +9,9 @@
 import UIKit
 
 var EditAudNumb:String = ""
+var WhereFromAudNumb:String = ""
+var WhereAudNumb:String = ""
+
 
 class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -31,10 +34,20 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        newModelArray = modelArray
         view.addSubview(upView)
     }
     
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch segIdent {
+        case 1:
+            WhereFromAudNumb = newModelArray[indexPath.row].title!
+        case 2:
+            WhereAudNumb = newModelArray[indexPath.row].title!
+        default:
+            segIdent = 0
+        }
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

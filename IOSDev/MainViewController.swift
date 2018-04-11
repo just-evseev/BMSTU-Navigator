@@ -12,6 +12,7 @@ var numberFloat: Int = 1
 
 var modelArray = [AudCellModel]()
 var popPlaceArray = [AudCellModel]()
+var segIdent = 0
 
 class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -28,13 +29,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
 
     var ChangableFloatNumber:Int = numberFloat
     var arrayOfMysor = ["Красная площадь","Обжорный ряд","У ноги","Дом Физики","Метро","Фонтан"]
-    
-    @IBAction func WhereTextFiledPressed(_ sender: Any) {
-        
-        WhereTextField.isUserInteractionEnabled = false
-        performSegue(withIdentifier: "inputValueSegue", sender: self)
-
-    }
     
     func fillModelArray() {
         for j in 1...11 {
@@ -56,18 +50,22 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         }
     }
     
-    @IBAction func WhereFromTextFieldPressed (_ sender: Any) {
+    @IBAction func WhereFromButtonPressed(_ sender: UIButton) {
         
-        WhereFromTextField.isUserInteractionEnabled = false
-        performSegue(withIdentifier: "inputValueSegue", sender: self)
+        segIdent = 1
+        performSegue(withIdentifier: "WhereFrom", sender: self)
+
+    }
+    
+    @IBAction func WhereButtonPressed(_ sender: UIButton) {
         
+        segIdent = 2
+        performSegue(withIdentifier: "Where", sender: self)
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        WhereFromTextField.isUserInteractionEnabled = true
-        WhereTextField.isUserInteractionEnabled = true
         
         self.MapScrollView.minimumZoomScale = 1.0
         self.MapScrollView.maximumZoomScale = 6.0
@@ -92,11 +90,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)        
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        
-        if self.isMovingFromParentViewController {
-            WhereFromTextField.isUserInteractionEnabled = true
-            WhereTextField.isUserInteractionEnabled = true
-        }
 
     }
     
