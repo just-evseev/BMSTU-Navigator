@@ -67,9 +67,9 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MapScrollView.delegate = self
         self.MapScrollView.minimumZoomScale = 1.0
         self.MapScrollView.maximumZoomScale = 6.0
-        MapScrollView.delegate = self
         MapImageView.frame = CGRect(x: 0, y: 0, width: MapScrollView.frame.size.width, height: MapScrollView.frame.size.height)
         MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
         MapImageView.isUserInteractionEnabled = true

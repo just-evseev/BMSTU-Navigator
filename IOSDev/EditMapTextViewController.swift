@@ -23,19 +23,27 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
     var newModelArray = [AudCellModel]()
     var mysor:Int = 0
     
-    @IBAction func TextFieldValueChanged(_ sender: UITextField) {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         EditAudNumb = NumbAudTextField.text!
+        newModelArray = []
         for keks in modelArray{
-            if keks.title!.first == EditAudNumb.first {
+            if keks.title!.range(of: EditAudNumb) != nil  {
                 newModelArray.append(keks)
             }
+            
         }
+        tipsTableView.reloadData()
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         newModelArray = modelArray
         view.addSubview(upView)
+        
+        tipsTableView.delegate = self
+        tipsTableView.dataSource = self
+        tipsTableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

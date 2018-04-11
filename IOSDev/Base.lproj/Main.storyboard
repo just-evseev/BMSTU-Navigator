@@ -325,6 +325,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="TextFieldValueChanged:" destination="vwO-nx-sXS" eventType="valueChanged" id="vvU-2O-2Le"/>
+                                            <action selector="textFieldEditingChanged:" destination="vwO-nx-sXS" eventType="editingChanged" id="lcS-VI-BOu"/>
                                         </connections>
                                     </textField>
                                 </subviews>
