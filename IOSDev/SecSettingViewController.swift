@@ -54,10 +54,26 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             switch mySecIndex {
             case 0:
                 SettingIdentifier[0] = "Русский"
+                switch SettingIdentifier[1]{
+                case "Light":
+                    SettingIdentifier[1] = "Светлая"
+                case "Dark":
+                    SettingIdentifier[1] = "Темная"
+                default:
+                    break
+                }
             case 1:
                 SettingIdentifier[0] = "English"
+                switch SettingIdentifier[1]{
+                case "Светлая":
+                    SettingIdentifier[1] = "Light"
+                case "Темная":
+                    SettingIdentifier[1] = "Dark"
+                default:
+                    break
+                }
             default:
-                SettingIdentifier[0] = "Ошибка 200"
+                break
             }
         case 1:
             switch mySecIndex {
@@ -74,11 +90,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                     SettingIdentifier[1] = "Dark"
                 }
             default:
-                SettingIdentifier[1] = "Ошибка 201"
+                break
             }
         default:
-            SettingIdentifier[1] = "Ошибка 202"
+            break
         }
+        _ = navigationController?.popViewController(animated: true)
+
     }
     
     //надо добавить переход назад при выборе какой-либо настройки

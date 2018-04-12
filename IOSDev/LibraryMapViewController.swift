@@ -17,6 +17,7 @@ class LibraryMapViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var AudButton: UIButton!
     @IBOutlet weak var PopPlaceButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var LibraryNavigationItem: UINavigationItem!
     let cellIdentifier = "SettingTableViewCell"
     var newModelArray = [AudCellModel]()
 
@@ -27,6 +28,25 @@ class LibraryMapViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         newModelArray = modelArray
+        
+        switch SettingIdentifier[0] {
+        case "Русский":
+            historyButton.setTitle("История",for: .normal)
+            favoritesButton.setTitle("Избранное",for: .normal)
+            allButton.setTitle("Все",for: .normal)
+            AudButton.setTitle("Аудитории",for: .normal)
+            PopPlaceButton.setTitle("Популярные места",for: .normal)
+            LibraryNavigationItem.title = "Все Аудитории"
+        case "English":
+            historyButton.setTitle("History",for: .normal)
+            favoritesButton.setTitle("Favorites",for: .normal)
+            allButton.setTitle("All",for: .normal)
+            AudButton.setTitle("Classrooms",for: .normal)
+            PopPlaceButton.setTitle("Interesting Pleces",for: .normal)
+            LibraryNavigationItem.title = "All Classrooms"
+        default:
+            break
+        }
         
         super.viewDidLoad()
     }
@@ -46,7 +66,15 @@ class LibraryMapViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        switch segLibraryIdent {
+        case 1:
+            WhereFromAudNumb = newModelArray[indexPath.row].title!
+        case 2:
+            WhereAudNumb = newModelArray[indexPath.row].title!
+        default:
+            segIdent = 0
+        }
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -13,6 +13,8 @@ var numberFloat: Int = 1
 var modelArray = [AudCellModel]()
 var popPlaceArray = [AudCellModel]()
 var segIdent = 0
+var segLibraryIdent = 0
+var SettingIdentifier = ["Русский", "Светлая"]
 
 class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -31,7 +33,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     var arrayOfMysor = ["Красная площадь","Обжорный ряд","У ноги","Дом Физики","Метро","Фонтан"]
     
     func fillModelArray() {
-        for j in 1...11 {
+        modelArray = []
+        for j in 1...5 {
             for i in (j*100)...(j*100+35) {
                 let model = AudCellModel()
                 model.title = "\(i)ю"
@@ -43,25 +46,36 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 modelArray.append(model)
             }
         }
+        for j in 6...11 {
+            for i in (j*100)...(j*100+15) {
+                let model = AudCellModel()
+                model.title = "\(i)"
+                modelArray.append(model)
+            }
+        }
+        popPlaceArray = []
         for keks in arrayOfMysor {
             let model = AudCellModel()
             model.title = keks
             popPlaceArray.append(model)
         }
     }
+
+    @IBAction func WhereLibraryButtonPressed(_ sender: UIButton) {
+        segLibraryIdent = 1
+    }
+    
+
+    @IBAction func WhereFromLibraryButtonPressed(_ sender: UIButton) {
+        segLibraryIdent = 2
+    }
     
     @IBAction func WhereFromButtonPressed(_ sender: UIButton) {
-        
         segIdent = 1
-        performSegue(withIdentifier: "WhereFrom", sender: self)
-
     }
     
     @IBAction func WhereButtonPressed(_ sender: UIButton) {
-        
         segIdent = 2
-        performSegue(withIdentifier: "Where", sender: self)
-
     }
     
     override func viewDidLoad() {
@@ -80,11 +94,20 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         UpView.superview?.bringSubview(toFront: UpView)
         
         fillModelArray()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        if WhereFromAudNumb != "" {
+            WhereFromTextField.text = WhereFromAudNumb
+        }
+        if WhereAudNumb != "" {
+            WhereTextField.text = WhereAudNumb
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

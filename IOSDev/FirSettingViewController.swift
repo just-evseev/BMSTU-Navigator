@@ -8,7 +8,7 @@
 
 import UIKit
 
-var SettingIdentifier = ["Русский", "Светлая"]
+
 var myIndex = 0
 
 class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {

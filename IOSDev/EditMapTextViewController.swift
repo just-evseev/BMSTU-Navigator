@@ -55,6 +55,8 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
         default:
             segIdent = 0
         }
+        _ = navigationController?.popViewController(animated: true)
+
     }
     
     

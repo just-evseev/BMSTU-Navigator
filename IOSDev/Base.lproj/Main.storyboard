@@ -30,9 +30,6 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="WhereTextFiledPressed:" destination="CMc-gY-mPS" eventType="editingDidBegin" id="zRa-iO-QWF"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Откуда" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gO9-Ti-UEu">
                                         <rect key="frame" x="8" y="42" width="175.5" height="30"/>
@@ -42,9 +39,6 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="WhereFromTextFieldPressed:" destination="CMc-gY-mPS" eventType="editingDidBegin" id="RvS-8b-fuW"/>
-                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O62-Ok-4aa">
                                         <rect key="frame" x="153" y="42" width="30" height="30"/>
@@ -54,7 +48,9 @@
                                         </constraints>
                                         <state key="normal" title="M"/>
                                         <connections>
-                                            <segue destination="1qR-XU-Rdt" kind="show" id="b0B-tz-VR4"/>
+                                            <action selector="WhereButtonPressed:" destination="CMc-gY-mPS" eventType="touchUpInside" id="Z03-fa-Ifk"/>
+                                            <action selector="WhereLibraryButtonPressed:" destination="CMc-gY-mPS" eventType="touchUpInside" id="E2Q-b8-xDa"/>
+                                            <segue destination="1qR-XU-Rdt" kind="show" identifier="WhereFrom" id="b0B-tz-VR4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9S-90-ubW">
@@ -65,7 +61,9 @@
                                         </constraints>
                                         <state key="normal" title="M"/>
                                         <connections>
-                                            <segue destination="1qR-XU-Rdt" kind="show" id="GLC-FJ-gh4"/>
+                                            <action selector="WhereFromButtonPressed:" destination="CMc-gY-mPS" eventType="touchUpInside" id="5Hu-ww-Ykg"/>
+                                            <action selector="WhereFromLibraryButtonPressed:" destination="CMc-gY-mPS" eventType="touchUpInside" id="66H-vd-P3v"/>
+                                            <segue destination="1qR-XU-Rdt" kind="show" identifier="Where" id="GLC-FJ-gh4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sd6-aG-14H">
@@ -205,6 +203,7 @@
                                             <constraint firstAttribute="height" constant="30" id="Te6-4w-NIq"/>
                                             <constraint firstAttribute="width" constant="178" id="pBf-zU-I1q"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <state key="normal" title="Популярные места"/>
                                         <connections>
                                             <action selector="popPlaceButtonPressed:" destination="1qR-XU-Rdt" eventType="touchUpInside" id="yZW-Ki-Vy9"/>
@@ -279,6 +278,7 @@
                     <connections>
                         <outlet property="AudButton" destination="GTJ-vb-RAz" id="zie-81-3GH"/>
                         <outlet property="DownView" destination="pfh-nB-aGB" id="ZVA-ys-yrh"/>
+                        <outlet property="LibraryNavigationItem" destination="vZH-mb-QKd" id="PNd-SB-cIY"/>
                         <outlet property="PopPlaceButton" destination="LcK-G9-f6B" id="nuz-PU-azF"/>
                         <outlet property="allButton" destination="a6V-fQ-tiY" id="vFS-xO-2Kd"/>
                         <outlet property="favoritesButton" destination="lH6-3h-fXP" id="9iv-iz-fNo"/>
