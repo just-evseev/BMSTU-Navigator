@@ -167,6 +167,7 @@
                         <outlet property="WhereFromDictionButton" destination="O62-Ok-4aa" id="fx3-ZL-B2l"/>
                         <outlet property="WhereFromTextField" destination="gO9-Ti-UEu" id="Djp-Cz-dOG"/>
                         <outlet property="WhereTextField" destination="dss-TA-2qo" id="VkY-32-oqj"/>
+                        <outlet property="mainNavigationItem" destination="Jjo-Qa-Fo6" id="NZp-Px-ida"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hun-Vp-Tqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -353,6 +354,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ввод аудитории" id="geT-mT-4Kg"/>
                     <connections>
+                        <outlet property="EditNavigationItem" destination="geT-mT-4Kg" id="c6B-dq-hgq"/>
                         <outlet property="NumbAudTextField" destination="Uy3-DF-IcT" id="iHh-Dr-0Rk"/>
                         <outlet property="tipsTableView" destination="TtH-08-i8o" id="bn1-cO-iSg"/>
                         <outlet property="upView" destination="SnP-e8-IbF" id="Yrc-y6-6TE"/>
@@ -362,7 +364,7 @@
             </objects>
             <point key="canvasLocation" x="-183.19999999999999" y="-533.88305847076469"/>
         </scene>
-        <!--Item-->
+        <!--Title-->
         <scene sceneID="WoI-Sa-rPc">
             <objects>
                 <viewController id="S9e-pu-35f" customClass="ThirdViewController" customModule="IOSDev" customModuleProvider="target" sceneMemberID="viewController">
@@ -395,8 +397,9 @@
                         <viewLayoutGuide key="safeArea" id="ylD-au-KgB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="2gR-RO-EhJ"/>
-                    <navigationItem key="navigationItem" id="Uh7-Na-yT3"/>
+                    <navigationItem key="navigationItem" title="Title" id="2Eh-5N-cqZ"/>
                     <connections>
+                        <outlet property="FirstSetNavigationItem" destination="2Eh-5N-cqZ" id="h4p-qK-mc9"/>
                         <outlet property="tableView" destination="77Q-ZS-2qa" id="ODm-S3-joV"/>
                         <segue destination="rtd-jp-MDH" kind="show" identifier="segue" id="xai-a6-BI4"/>
                     </connections>

@@ -16,6 +16,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var TableViewElements = ["Язык","Тема"]
     let cellIdentifier = "CustomTableViewCell"
 
+    @IBOutlet weak var FirstSetNavigationItem: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -26,10 +27,12 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         switch SettingIdentifier[0] {
         case "Русский":
             TableViewElements = ["Язык","Тема"]
+            FirstSetNavigationItem.title = "Настройки"
         case "English":
             TableViewElements = ["Language","Theme"]
+            FirstSetNavigationItem.title = "Settings"
         default:
-            TableViewElements = ["Язык","Тема"]
+            break
         }
         
         super.viewDidLoad()
@@ -42,11 +45,14 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         switch SettingIdentifier[0] {
         case "Русский":
             TableViewElements = ["Язык","Тема"]
+            FirstSetNavigationItem.title = "Настройки"
         case "English":
             TableViewElements = ["Language","Theme"]
+            FirstSetNavigationItem.title = "Settings"
         default:
-            TableViewElements = ["Язык","Тема"]
+            break
         }
+
         tableView.reloadData()
     }
     

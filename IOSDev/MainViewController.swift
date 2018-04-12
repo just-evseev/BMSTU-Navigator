@@ -19,6 +19,7 @@ var SettingIdentifier = ["Русский", "Светлая"]
 class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
+    @IBOutlet weak var mainNavigationItem: UINavigationItem!
     @IBOutlet weak var MapScrollView: UIScrollView!
     @IBOutlet weak var MapImageView: UIImageView!
     @IBOutlet weak var SettingButton: UIButton!
@@ -93,9 +94,20 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         MapImageView.image = UIImage (named: "Float\(ChangableFloatNumber)")
         UpView.superview?.bringSubview(toFront: UpView)
         
+        switch SettingIdentifier[0] {
+        case "Русский":
+            WhereTextField.placeholder = "куда"
+            WhereFromTextField.placeholder = "откуда"
+            mainNavigationItem.title = "Карта"
+        case "English":
+            WhereTextField.placeholder = "where"
+            WhereFromTextField.placeholder = "where from"
+            mainNavigationItem.title = "Map"
+        default:
+            break
+        }
+        
         fillModelArray()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +120,18 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             WhereTextField.text = WhereAudNumb
         }
         
+        switch SettingIdentifier[0] {
+        case "Русский":
+            WhereTextField.placeholder = "куда"
+            WhereFromTextField.placeholder = "откуда"
+            mainNavigationItem.title = "Карта"
+        case "English":
+            WhereTextField.placeholder = "where"
+            WhereFromTextField.placeholder = "where from"
+            mainNavigationItem.title = "Map"
+        default:
+            break
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

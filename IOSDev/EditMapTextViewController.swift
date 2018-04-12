@@ -18,6 +18,7 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var upView: UIView!
     @IBOutlet weak var NumbAudTextField: UITextField!
     @IBOutlet weak var tipsTableView: UITableView!
+    @IBOutlet weak var EditNavigationItem: UINavigationItem!
     
     let cellIdentifier = "SettingTableViewCell"
     var newModelArray = [AudCellModel]()
@@ -44,6 +45,14 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
         tipsTableView.delegate = self
         tipsTableView.dataSource = self
         tipsTableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        switch SettingIdentifier[0] {
+        case "English":
+            EditNavigationItem.title = "Input Classroom"
+        case "Русский":
+            EditNavigationItem.title = "Ввод аудитории"
+        default:
+            break
+        }
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
