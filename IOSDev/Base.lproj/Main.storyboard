@@ -136,7 +136,10 @@
                                     <constraint firstAttribute="height" constant="40" id="72U-ZT-cTm"/>
                                     <constraint firstAttribute="width" constant="40" id="Gdo-gf-Bvp"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="Share_logo"/>
+                                <state key="normal" title="Button" image="Share-icon-iOS"/>
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="CMc-gY-mPS" eventType="touchUpInside" id="EaN-JK-kVj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -484,7 +487,7 @@
         <image name="Float1" width="317" height="297"/>
         <image name="Gerb_MGTU_imeni_Baumana" width="1000" height="1180"/>
         <image name="Set_logo" width="64" height="64"/>
-        <image name="Share_logo" width="256" height="256"/>
+        <image name="Share-icon-iOS" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oV5-Ah-5Df"/>

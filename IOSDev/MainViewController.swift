@@ -79,6 +79,12 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         segIdent = 2
     }
     
+    @IBAction func shareButtonPressed(_ sender: UIButton) {
+        let activityVC = UIActivityViewController(activityItems: [(MapImageView.image!)], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityVC, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
