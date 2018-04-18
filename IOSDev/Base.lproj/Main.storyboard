@@ -161,6 +161,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="HTM-f4-Deg"/>
                     <navigationItem key="navigationItem" id="Jjo-Qa-Fo6"/>
                     <connections>
+                        <outlet property="MainView" destination="KfJ-fa-POJ" id="kbV-L8-4UK"/>
                         <outlet property="MapImageView" destination="r8A-0O-vcw" id="Qwp-el-cam"/>
                         <outlet property="MapScrollView" destination="q9X-cj-dbQ" id="aT2-oV-kC3"/>
                         <outlet property="SettingButton" destination="Z9d-9I-a5R" id="xab-IK-d8P"/>
@@ -487,7 +488,7 @@
         <image name="Float1" width="317" height="297"/>
         <image name="Gerb_MGTU_imeni_Baumana" width="1000" height="1180"/>
         <image name="Set_logo" width="64" height="64"/>
-        <image name="Share-icon-iOS" width="77" height="77"/>
+        <image name="Share-icon-iOS" width="155" height="155"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oV5-Ah-5Df"/>

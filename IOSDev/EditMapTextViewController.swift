@@ -48,8 +48,24 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
         switch SettingIdentifier[0] {
         case "English":
             EditNavigationItem.title = "Input Classroom"
+            switch SettingIdentifier[1]{
+            case "Light":
+                upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+            case "Dark":
+                upView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
+            default:
+                break
+            }
         case "Русский":
             EditNavigationItem.title = "Ввод аудитории"
+            switch SettingIdentifier[1]{
+            case "Светлая":
+                upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+            case "Темная":
+                upView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
+            default:
+                break
+            }
         default:
             break
         }
