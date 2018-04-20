@@ -33,6 +33,9 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
 
     var ChangableFloatNumber:Int = numberFloat
     var arrayOfMysor = ["Красная площадь","Обжорный ряд","У ноги","Дом Физики","Метро","Фонтан"]
+    var way:[Int] = []
+    var classroom:[(Int,Int)] = []
+    var schet:Int = 0
     
     func fillModelArray() {
         modelArray = []
@@ -40,7 +43,9 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             for i in (j*100)...(j*100+35) {
                 let model = AudCellModel()
                 model.title = "\(i)ю"
+                schet += 1
                 modelArray.append(model)
+                classroom.append((i,schet))
             }
             for i in (j*100+36)...(j*100+57) {
                 let model = AudCellModel()
@@ -188,6 +193,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.MapImageView
+    }
+    
+    func WaveAlgorithm(Where: Int, WhereFrom:Int){
+        
     }
     
 }

@@ -53,6 +53,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             break
         }
 
+//        let navigationBar = self.navigationController?.navigationBar
+//        navigationBar?.barStyle = UIBarStyle.black
+//        navigationBar?.tintColor = UIColor.blue
+//        FirstSetNavigationItem.backBarButtonItem?.title = "sdfljsn"
+
         tableView.reloadData()
     }
     

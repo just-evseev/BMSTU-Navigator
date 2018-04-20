@@ -55,10 +55,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0477780D2089F2DA00229FE5 /* RTFfiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RTFfiles;
+			sourceTree = "<group>";
+		};
 		048D951B206308FF009A9D39 = {
 			isa = PBXGroup;
 			children = (
 				048D9526206308FF009A9D39 /* IOSDev */,
+				0477780D2089F2DA00229FE5 /* RTFfiles */,
 				048D9525206308FF009A9D39 /* Products */,
 			);
 			sourceTree = "<group>";
