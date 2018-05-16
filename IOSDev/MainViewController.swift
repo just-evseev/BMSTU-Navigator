@@ -206,19 +206,19 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         print (waveArray)
         var counter:Int = 0
         var flagWave:Bool = true
-        waveArray[whereFromVar.float-1][whereFromVar.koordX][whereFromVar.koordY] = 1
-        while  (waveArray[whereWaveVar.float][whereWaveVar.koordX][whereWaveVar.koordY] == 0)&&(flagWave) {
+        waveArray[whereFromVar.float-1][whereFromVar.koordY][whereFromVar.koordX] = 1
+        while  (waveArray[whereWaveVar.float][whereWaveVar.koordY][whereWaveVar.koordX] == 0)&&(flagWave) {
             flagWave = false
             counter += 1
             for float in 1...11 {
-                for x in 1...98 {
-                    for y in 1...98 {
-                        if waveArray[float][x][y] == counter {
+                for y in 1...98 {
+                    for x in 1...98 {
+                        if waveArray[float][y][x] == counter {
                             flagWave = true
-                            if waveArray[float][x][y+1] == 0 {waveArray[float][x][y+1] = counter+1}
-                            if waveArray[float][x][y-1] == 0 {waveArray[float][x][y-1] = counter+1}
-                            if waveArray[float][x+1][y] == 0 {waveArray[float][x+1][y] = counter+1}
-                            if waveArray[float][x-1][y] == 0 {waveArray[float][x-1][y] = counter+1}
+                            if waveArray[float][y][x+1] == 0 {waveArray[float][y][x+1] = counter+1}
+                            if waveArray[float][y][x-1] == 0 {waveArray[float][y][x-1] = counter+1}
+                            if waveArray[float][y+1][x] == 0 {waveArray[float][y+1][x] = counter+1}
+                            if waveArray[float][y-1][x] == 0 {waveArray[float][y-1][x] = counter+1}
                         }
                     }
                 }
@@ -229,23 +229,23 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         }else{
             var tekX = whereWaveVar.koordX
             var tekY = whereWaveVar.koordY
-            var tekFloat = whereWaveVar.float
-            counter = waveArray[whereWaveVar.float][whereWaveVar.koordX][whereWaveVar.koordY]+1
+            let tekFloat = whereWaveVar.float
+            counter = waveArray[whereWaveVar.float][whereWaveVar.koordY][whereWaveVar.koordX]+1
             while counter != 2 {
                 counter -= 1
-                if waveArray[tekFloat][tekX][tekY+1] == counter {
-                    print("Float:\(tekFloat); X:\(tekX); Y\(tekY+1)")
-                    tekY+=1
+                if waveArray[tekFloat][tekY][tekX+1] == counter {
+                    print("Float:\(tekFloat); X:\(tekX+1); Y\(tekY)")
+                    tekX+=1
                 }
-                else{ if waveArray[tekFloat][tekX][tekY-1] == counter {
-                        print("Float:\(tekFloat); X:\(tekX); Y\(tekY-1)")
-                        tekY-=1}
-                    else{ if waveArray[tekFloat][tekX+1][tekY] == counter {
-                            print("Float:\(tekFloat); X:\(tekX+1); Y\(tekY)")
-                            tekX+=1}
+                else{ if waveArray[tekFloat][tekY][tekX-1] == counter {
+                        print("Float:\(tekFloat); X:\(tekX-1); Y\(tekY)")
+                        tekX-=1}
+                    else{ if waveArray[tekFloat][tekY+1][tekX] == counter {
+                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY+1)")
+                            tekY+=1}
                         else{
-                            print("Float:\(tekFloat); X:\(tekX-1); Y\(tekY)")
-                            tekX-=1
+                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY-1)")
+                            tekY-=1
                         }
                     }
                 }
