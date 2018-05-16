@@ -8,27 +8,27 @@
 
 import UIKit
 
-var EditAudNumb:String = ""
-var WhereFromAudNumb:String = ""
-var WhereAudNumb:String = ""
+var editAudNumb:String = ""
+var whereFromAudNumb:String = ""
+var whereAudNumb:String = ""
 
 
 class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var upView: UIView!
-    @IBOutlet weak var NumbAudTextField: UITextField!
+    @IBOutlet weak var numbAudTextField: UITextField!
     @IBOutlet weak var tipsTableView: UITableView!
-    @IBOutlet weak var EditNavigationItem: UINavigationItem!
+    @IBOutlet weak var editNavigationItem: UINavigationItem!
     
     let cellIdentifier = "SettingTableViewCell"
     var newModelArray = [AudCellModel]()
     var mysor:Int = 0
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        EditAudNumb = NumbAudTextField.text!
+        editAudNumb = numbAudTextField.text!
         newModelArray = []
         for keks in modelArray{
-            if keks.title!.range(of: EditAudNumb) != nil  {
+            if keks.title!.range(of: editAudNumb) != nil  {
                 newModelArray.append(keks)
             }
             
@@ -45,10 +45,10 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
         tipsTableView.delegate = self
         tipsTableView.dataSource = self
         tipsTableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        switch SettingIdentifier[0] {
+        switch settingIdentifier[0] {
         case "English":
-            EditNavigationItem.title = "Input Classroom"
-            switch SettingIdentifier[1]{
+            editNavigationItem.title = "Input Classroom"
+            switch settingIdentifier[1]{
             case "Light":
                 upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
             case "Dark":
@@ -57,8 +57,8 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
                 break
             }
         case "Русский":
-            EditNavigationItem.title = "Ввод аудитории"
-            switch SettingIdentifier[1]{
+            editNavigationItem.title = "Ввод аудитории"
+            switch settingIdentifier[1]{
             case "Светлая":
                 upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
             case "Темная":
@@ -74,9 +74,9 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch segIdent {
         case 1:
-            WhereFromAudNumb = newModelArray[indexPath.row].title!
+            whereFromAudNumb = newModelArray[indexPath.row].title!
         case 2:
-            WhereAudNumb = newModelArray[indexPath.row].title!
+            whereAudNumb = newModelArray[indexPath.row].title!
         default:
             segIdent = 0
         }

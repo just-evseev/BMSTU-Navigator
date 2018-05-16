@@ -13,7 +13,7 @@ var mySecIndex = 0
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    var SettingDict = [["Русский","English"], ["Светлая","Темная"]]
+    var settingDict = [["Русский","English"], ["Светлая","Темная"]]
     let cellIdentifier = "SettingTableViewCell"
     
     override func viewDidLoad() {
@@ -22,27 +22,27 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         
-        switch SettingIdentifier[0] {
+        switch settingIdentifier[0] {
         case "Русский":
-            SettingDict = [["Русский","English"], ["Светлая","Темная"]]
+            settingDict = [["Русский","English"], ["Светлая","Темная"]]
         case "English":
-            SettingDict = [["Русский","English"], ["Light","Dark"]]
+            settingDict = [["Русский","English"], ["Light","Dark"]]
         default:
-            SettingDict = [["Русский","English"], ["Светлая","Темная"]]
+            settingDict = [["Русский","English"], ["Светлая","Темная"]]
         }
         
         super.viewDidLoad()
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return SettingDict[myIndex].count
+        return settingDict[myIndex].count
     }
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SettingTableViewCell
-        cell.settingsLbl?.text = SettingDict[myIndex][indexPath.row]
+        cell.settingsLbl?.text = settingDict[myIndex][indexPath.row]
         return cell
         
     }
@@ -53,22 +53,22 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 0:
             switch mySecIndex {
             case 0:
-                SettingIdentifier[0] = "Русский"
-                switch SettingIdentifier[1]{
+                settingIdentifier[0] = "Русский"
+                switch settingIdentifier[1]{
                 case "Light":
-                    SettingIdentifier[1] = "Светлая"
+                    settingIdentifier[1] = "Светлая"
                 case "Dark":
-                    SettingIdentifier[1] = "Темная"
+                    settingIdentifier[1] = "Темная"
                 default:
                     break
                 }
             case 1:
-                SettingIdentifier[0] = "English"
-                switch SettingIdentifier[1]{
+                settingIdentifier[0] = "English"
+                switch settingIdentifier[1]{
                 case "Светлая":
-                    SettingIdentifier[1] = "Light"
+                    settingIdentifier[1] = "Light"
                 case "Темная":
-                    SettingIdentifier[1] = "Dark"
+                    settingIdentifier[1] = "Dark"
                 default:
                     break
                 }
@@ -78,16 +78,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 1:
             switch mySecIndex {
             case 0:
-                if SettingIdentifier[0] == "Русский" {
-                    SettingIdentifier[1] = "Светлая"
+                if settingIdentifier[0] == "Русский" {
+                    settingIdentifier[1] = "Светлая"
                 } else {
-                    SettingIdentifier[1] = "Light"
+                    settingIdentifier[1] = "Light"
                 }
             case 1:
-                if SettingIdentifier[0] == "Русский" {
-                    SettingIdentifier[1] = "Темная"
+                if settingIdentifier[0] == "Русский" {
+                    settingIdentifier[1] = "Темная"
                 } else {
-                    SettingIdentifier[1] = "Dark"
+                    settingIdentifier[1] = "Dark"
                 }
             default:
                 break

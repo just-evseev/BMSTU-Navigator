@@ -29,7 +29,7 @@ class LibraryMapViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         newModelArray = modelArray
         
-        switch SettingIdentifier[0] {
+        switch settingIdentifier[0] {
         case "Русский":
             historyButton.setTitle("История",for: .normal)
             favoritesButton.setTitle("Избранное",for: .normal)
@@ -68,9 +68,9 @@ class LibraryMapViewController: UIViewController, UITableViewDelegate, UITableVi
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch segLibraryIdent {
         case 1:
-            WhereFromAudNumb = newModelArray[indexPath.row].title!
+            whereFromAudNumb = newModelArray[indexPath.row].title!
         case 2:
-            WhereAudNumb = newModelArray[indexPath.row].title!
+            whereAudNumb = newModelArray[indexPath.row].title!
         default:
             segIdent = 0
         }

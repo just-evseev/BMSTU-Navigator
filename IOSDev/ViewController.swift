@@ -7,6 +7,18 @@
 //
 
 import UIKit
+import Firebase
+
+struct ClassRoom {
+    var numb:Int
+    var koordX:Int
+    var koordY:Int
+    var float:Int
+}
+
+var ref: DatabaseReference!
+var floatWaveArray = [[[Int]]]()
+var floatClassArray = [[ClassRoom]]()
 
 class ViewController: UIViewController{
 
@@ -14,12 +26,12 @@ class ViewController: UIViewController{
     @IBOutlet weak var BmstuLogo: UIImageView!
     @IBOutlet weak var ButtonPressed: UIButton!
     
+    
     func logoAnimate() {
         
         BmstuLogo.isHidden = false
         self.HeightConstraintOutlet.constant = 100
         UIView.animate(withDuration: 2.0, animations: {
-            //self.BmstuLogo.frame = CGRect(x: 67.5, y: 30, width: 240, height: 240)
             self.view.layoutIfNeeded()
 
         }) { _ in
@@ -32,13 +44,26 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         self.ButtonPressed.alpha = 0.0
         logoAnimate()
-        super.viewDidLoad()
+        ref = Database.database().reference()
+
+        for i in 0...10 {
+            ref.child("Wave").child("Plan").child("Float\(i+1)").observe(DataEventType.value) { (snapshot) in
+                if let item = snapshot.value! as? [[Int]] {
+                    floatWaveArray.append(item)
+                }
+            }
+            ref.child("Wave").child("ClassRooms").child("Float\(i+1)").observe(DataEventType.value) { (snapshot) in
+                if let item = snapshot.value! as? [[Int]] {
+                    for tekClassRoom in item {
+                        let classRoom = ClassRoom(numb: tekClassRoom[0], koordX: tekClassRoom[1], koordY: tekClassRoom[2], float: i+1)
+                        floatClassArray.append([classRoom])
+                    }
+                }
+            }
+        }
         
+        super.viewDidLoad()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
+   
 }
 

@@ -17,11 +17,13 @@
 		048D952F206308FF009A9D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048D952E206308FF009A9D39 /* Assets.xcassets */; };
 		048D9532206308FF009A9D39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048D9530206308FF009A9D39 /* LaunchScreen.storyboard */; };
 		04AA1A7F20752A78002AABA9 /* SecSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA1A7E20752A78002AABA9 /* SecSettingViewController.swift */; };
+		04AE9341209B8C15000ECC4D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04AE9340209B8C15000ECC4D /* GoogleService-Info.plist */; };
 		04C5F15020637635003530B7 /* FirSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5F14F20637635003530B7 /* FirSettingViewController.swift */; };
 		04C5F1652063C3BA003530B7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5F1632063C3BA003530B7 /* CustomTableViewCell.swift */; };
 		04C5F1662063C3BA003530B7 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */; };
 		04EAF3AD2063EDBF00D2C9A3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EAF3AB2063EDBF00D2C9A3 /* SettingTableViewCell.swift */; };
 		04EAF3AE2063EDBF00D2C9A3 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EAF3AC2063EDBF00D2C9A3 /* SettingTableViewCell.xib */; };
+		C5D00E12F1A22CC3BC6B013B /* Pods_IOSDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2ABD43CF164BB7A5234DDA4 /* Pods_IOSDev.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +39,15 @@
 		048D9531206308FF009A9D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		048D9533206308FF009A9D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04AA1A7E20752A78002AABA9 /* SecSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecSettingViewController.swift; sourceTree = "<group>"; };
+		04AE9340209B8C15000ECC4D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04C5F14F20637635003530B7 /* FirSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirSettingViewController.swift; sourceTree = "<group>"; };
 		04C5F1632063C3BA003530B7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		04EAF3AB2063EDBF00D2C9A3 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		04EAF3AC2063EDBF00D2C9A3 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		4F019C2B2059223CAF084E1B /* Pods-IOSDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSDev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOSDev/Pods-IOSDev.debug.xcconfig"; sourceTree = "<group>"; };
+		B2ABD43CF164BB7A5234DDA4 /* Pods_IOSDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E14D49430E2C28512CDF54B5 /* Pods-IOSDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSDev.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOSDev/Pods-IOSDev.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5D00E12F1A22CC3BC6B013B /* Pods_IOSDev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +75,8 @@
 				048D9526206308FF009A9D39 /* IOSDev */,
 				0477780D2089F2DA00229FE5 /* RTFfiles */,
 				048D9525206308FF009A9D39 /* Products */,
+				46C39026CB070DEB6FCADE35 /* Pods */,
+				7F611BD33CE296E955313018 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +107,26 @@
 				04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */,
 				04EAF3AB2063EDBF00D2C9A3 /* SettingTableViewCell.swift */,
 				04EAF3AC2063EDBF00D2C9A3 /* SettingTableViewCell.xib */,
+				04AE9340209B8C15000ECC4D /* GoogleService-Info.plist */,
 			);
 			path = IOSDev;
+			sourceTree = "<group>";
+		};
+		46C39026CB070DEB6FCADE35 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F019C2B2059223CAF084E1B /* Pods-IOSDev.debug.xcconfig */,
+				E14D49430E2C28512CDF54B5 /* Pods-IOSDev.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7F611BD33CE296E955313018 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2ABD43CF164BB7A5234DDA4 /* Pods_IOSDev.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,9 +136,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 048D9536206308FF009A9D39 /* Build configuration list for PBXNativeTarget "IOSDev" */;
 			buildPhases = (
+				0B933B46A2E66CE07D51A9D1 /* [CP] Check Pods Manifest.lock */,
 				048D9520206308FF009A9D39 /* Sources */,
 				048D9521206308FF009A9D39 /* Frameworks */,
 				048D9522206308FF009A9D39 /* Resources */,
+				28BB0B359D5DDE2A32A70A3B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,10 +195,54 @@
 				04C5F1662063C3BA003530B7 /* CustomTableViewCell.xib in Resources */,
 				04EAF3AE2063EDBF00D2C9A3 /* SettingTableViewCell.xib in Resources */,
 				048D952D206308FF009A9D39 /* Main.storyboard in Resources */,
+				04AE9341209B8C15000ECC4D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B933B46A2E66CE07D51A9D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IOSDev-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28BB0B359D5DDE2A32A70A3B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IOSDev/Pods-IOSDev-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IOSDev/Pods-IOSDev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		048D9520206308FF009A9D39 /* Sources */ = {
@@ -320,6 +393,7 @@
 		};
 		048D9537206308FF009A9D39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F019C2B2059223CAF084E1B /* Pods-IOSDev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -335,6 +409,7 @@
 		};
 		048D9538206308FF009A9D39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E14D49430E2C28512CDF54B5 /* Pods-IOSDev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

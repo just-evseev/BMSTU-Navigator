@@ -24,7 +24,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
 
-        switch SettingIdentifier[0] {
+        switch settingIdentifier[0] {
         case "Русский":
             TableViewElements = ["Язык","Тема"]
             FirstSetNavigationItem.title = "Настройки"
@@ -42,7 +42,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         super.viewWillAppear(animated)
 
-        switch SettingIdentifier[0] {
+        switch settingIdentifier[0] {
         case "Русский":
             TableViewElements = ["Язык","Тема"]
             FirstSetNavigationItem.title = "Настройки"
@@ -74,7 +74,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomTableViewCell
         cell.settingLbl?.text = TableViewElements[indexPath.row]
-        cell.secondSettingLbl?.text = SettingIdentifier[indexPath.row]
+        cell.secondSettingLbl?.text = settingIdentifier[indexPath.row]
         return cell
         
     }
