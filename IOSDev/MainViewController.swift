@@ -33,8 +33,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     @IBOutlet weak var whereFromDictionButton: UIButton!
 
     var changableFloatNumber:Int = numberFloat
-//    =========Удалить мусор и массив мусора==============
-    var arrayOfMysor = ["Красная площадь","Обжорный ряд","У ноги","Дом Физики","Метро","Фонтан"]
     var way:[Int] = []
     var classroom:[(Int,Int)] = []
     var schet:Int = 0
@@ -193,27 +191,31 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             for classRoom in float{
                 if classRoom.numb==whereWave {
                     whereWaveVar=classRoom
+                    print("======куда======")
                     print(whereWaveVar)
                 }
                 if classRoom.numb==whereFrom {
                     whereFromVar=classRoom
+                     print("======откуда======")
                     print(whereFromVar)
                 }
             }
         }
-        //============Поменять местами X и Y там где необходимо==============
         var waveArray = floatWaveArray
-        print (waveArray)
         var counter:Int = 0
         var flagWave:Bool = true
+        print("Этаж \(whereWaveVar.float-1); X=\(whereWaveVar.koordX),Y=\(whereWaveVar.koordY)")
+        print("То, куда мы 1 кладем (Должно быть 0): \(waveArray[whereFromVar.float-1][whereFromVar.koordY][whereFromVar.koordX])")
+        print("Тут должен быть 0: \(waveArray[whereWaveVar.float-1][whereWaveVar.koordX][whereWaveVar.koordY])")
         waveArray[whereFromVar.float-1][whereFromVar.koordY][whereFromVar.koordX] = 1
-        while  (waveArray[whereWaveVar.float][whereWaveVar.koordY][whereWaveVar.koordX] == 0)&&(flagWave) {
+        while  (waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX] == 0)&&(flagWave) {
             flagWave = false
             counter += 1
-            for float in 1...11 {
+            for float in 1...1 {//<- тут перечисление уже готовых этажей для обработки
                 for y in 1...98 {
                     for x in 1...98 {
                         if waveArray[float][y][x] == counter {
+                            print("\(x),\(y); \(counter)")
                             flagWave = true
                             if waveArray[float][y][x+1] == 0 {waveArray[float][y][x+1] = counter+1}
                             if waveArray[float][y][x-1] == 0 {waveArray[float][y][x-1] = counter+1}
@@ -224,29 +226,29 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 }
             }
         }
+        
         if !flagWave {
             print ("Невозможно построить маршрут между выбранными аудиториями")
         }else{
             var tekX = whereWaveVar.koordX
             var tekY = whereWaveVar.koordY
-            let tekFloat = whereWaveVar.float
-            counter = waveArray[whereWaveVar.float][whereWaveVar.koordY][whereWaveVar.koordX]+1
-            while counter != 2 {
+            let tekFloat = whereWaveVar.float-1
+            counter = waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX]
+            print("counter = \(counter)")
+            while counter > 2 {
                 counter -= 1
                 if waveArray[tekFloat][tekY][tekX+1] == counter {
-                    print("Float:\(tekFloat); X:\(tekX+1); Y\(tekY)")
                     tekX+=1
-                }
+                    print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")}
                 else{ if waveArray[tekFloat][tekY][tekX-1] == counter {
-                        print("Float:\(tekFloat); X:\(tekX-1); Y\(tekY)")
-                        tekX-=1}
+                        tekX-=1
+                        print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")}
                     else{ if waveArray[tekFloat][tekY+1][tekX] == counter {
-                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY+1)")
-                            tekY+=1}
+                            tekY+=1
+                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")}
                         else{
-                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY-1)")
                             tekY-=1
-                        }
+                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")}
                     }
                 }
                 

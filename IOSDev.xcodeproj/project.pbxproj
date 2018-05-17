@@ -62,18 +62,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0477780D2089F2DA00229FE5 /* RTFfiles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RTFfiles;
-			sourceTree = "<group>";
-		};
 		048D951B206308FF009A9D39 = {
 			isa = PBXGroup;
 			children = (
 				048D9526206308FF009A9D39 /* IOSDev */,
-				0477780D2089F2DA00229FE5 /* RTFfiles */,
 				048D9525206308FF009A9D39 /* Products */,
 				46C39026CB070DEB6FCADE35 /* Pods */,
 				7F611BD33CE296E955313018 /* Frameworks */,
@@ -94,22 +86,54 @@
 				048D9527206308FF009A9D39 /* AppDelegate.swift */,
 				048D9529206308FF009A9D39 /* ViewController.swift */,
 				04709AE02077398D00D43416 /* MainViewController.swift */,
-				048D952B206308FF009A9D39 /* Main.storyboard */,
-				04709AE420776E1100D43416 /* EditMapTextViewController.swift */,
-				04709AE220776DC000D43416 /* LibraryMapViewController.swift */,
-				04C5F14F20637635003530B7 /* FirSettingViewController.swift */,
-				04AA1A7E20752A78002AABA9 /* SecSettingViewController.swift */,
-				04709AE62078D72F00D43416 /* AudCellModel.swift */,
+				04C437DC20AD55B6008E7649 /* InputView */,
+				04C437DA20AD5542008E7649 /* StoryBoards */,
+				04C437DB20AD5596008E7649 /* SettingsView */,
+				04C437D920AD551E008E7649 /* Cells */,
 				048D952E206308FF009A9D39 /* Assets.xcassets */,
-				048D9530206308FF009A9D39 /* LaunchScreen.storyboard */,
 				048D9533206308FF009A9D39 /* Info.plist */,
+				04AE9340209B8C15000ECC4D /* GoogleService-Info.plist */,
+			);
+			path = IOSDev;
+			sourceTree = "<group>";
+		};
+		04C437D920AD551E008E7649 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				04709AE62078D72F00D43416 /* AudCellModel.swift */,
 				04C5F1632063C3BA003530B7 /* CustomTableViewCell.swift */,
 				04C5F1642063C3BA003530B7 /* CustomTableViewCell.xib */,
 				04EAF3AB2063EDBF00D2C9A3 /* SettingTableViewCell.swift */,
 				04EAF3AC2063EDBF00D2C9A3 /* SettingTableViewCell.xib */,
-				04AE9340209B8C15000ECC4D /* GoogleService-Info.plist */,
 			);
-			path = IOSDev;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		04C437DA20AD5542008E7649 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				048D952B206308FF009A9D39 /* Main.storyboard */,
+				048D9530206308FF009A9D39 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		04C437DB20AD5596008E7649 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				04C5F14F20637635003530B7 /* FirSettingViewController.swift */,
+				04AA1A7E20752A78002AABA9 /* SecSettingViewController.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		04C437DC20AD55B6008E7649 /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				04709AE420776E1100D43416 /* EditMapTextViewController.swift */,
+				04709AE220776DC000D43416 /* LibraryMapViewController.swift */,
+			);
+			path = InputView;
 			sourceTree = "<group>";
 		};
 		46C39026CB070DEB6FCADE35 /* Pods */ = {
@@ -158,7 +182,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Ilya;
 				TargetAttributes = {
 					048D9523206308FF009A9D39 = {
@@ -298,6 +322,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -305,6 +330,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -355,6 +381,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -362,6 +389,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
