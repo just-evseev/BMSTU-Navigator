@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gerb_MGTU_imeni_Baumana" translatesAutoresizingMaskIntoConstraints="NO" id="gXe-kU-JmX">
-                                <rect key="frame" x="67.5" y="225" width="240" height="240"/>
+                                <rect key="frame" x="67.5" y="210" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gXe-kU-JmX" secondAttribute="height" multiplier="1:1" id="aMV-Zv-GoP"/>
                                     <constraint firstAttribute="width" constant="240" id="bpE-sg-yhw"/>
@@ -30,7 +30,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gXe-kU-JmX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="H8U-ZY-gan"/>
-                            <constraint firstItem="gXe-kU-JmX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="205" id="QAF-YI-mmR"/>
+                            <constraint firstItem="gXe-kU-JmX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="190" id="QAF-YI-mmR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

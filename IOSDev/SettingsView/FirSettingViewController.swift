@@ -13,10 +13,10 @@ var myIndex = 0
 
 class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var TableViewElements = ["Язык","Тема"]
+    var tableViewElements = ["Язык","Тема"]
     let cellIdentifier = "CustomTableViewCell"
 
-    @IBOutlet weak var FirstSetNavigationItem: UINavigationItem!
+    @IBOutlet weak var firstSetNavigationItem: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -26,11 +26,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         switch settingIdentifier[0] {
         case "Русский":
-            TableViewElements = ["Язык","Тема"]
-            FirstSetNavigationItem.title = "Настройки"
+            tableViewElements = ["Язык","Тема"]
+            firstSetNavigationItem.title = "Настройки"
         case "English":
-            TableViewElements = ["Language","Theme"]
-            FirstSetNavigationItem.title = "Settings"
+            tableViewElements = ["Language","Theme"]
+            firstSetNavigationItem.title = "Settings"
         default:
             break
         }
@@ -44,11 +44,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         switch settingIdentifier[0] {
         case "Русский":
-            TableViewElements = ["Язык","Тема"]
-            FirstSetNavigationItem.title = "Настройки"
+            tableViewElements = ["Язык","Тема"]
+            firstSetNavigationItem.title = "Настройки"
         case "English":
-            TableViewElements = ["Language","Theme"]
-            FirstSetNavigationItem.title = "Settings"
+            tableViewElements = ["Language","Theme"]
+            firstSetNavigationItem.title = "Settings"
         default:
             break
         }
@@ -67,13 +67,13 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return TableViewElements.count
+        return tableViewElements.count
     }
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomTableViewCell
-        cell.settingLbl?.text = TableViewElements[indexPath.row]
+        cell.settingLbl?.text = tableViewElements[indexPath.row]
         cell.secondSettingLbl?.text = settingIdentifier[indexPath.row]
         return cell
         

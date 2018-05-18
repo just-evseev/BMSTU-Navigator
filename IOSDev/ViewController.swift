@@ -14,6 +14,8 @@ struct ClassRoom {
     var koordX:Int
     var koordY:Int
     var float:Int
+    var litera: String
+    var nazvanie: String
 }
 
 var ref: DatabaseReference!
@@ -53,9 +55,9 @@ class ViewController: UIViewController{
                 }
             }
             ref.child("Wave").child("ClassRooms").child("Float\(i+1)").observe(DataEventType.value) { (snapshot) in
-                if let item = snapshot.value! as? [[Int]] {
+                if let item = snapshot.value! as? [[String]] {
                     for tekClassRoom in item {
-                        let classRoom = ClassRoom(numb: tekClassRoom[0], koordX: tekClassRoom[1], koordY: tekClassRoom[2], float: i+1)
+                        let classRoom = ClassRoom(numb: Int(tekClassRoom[0])!, koordX: Int(tekClassRoom[1])!, koordY: Int(tekClassRoom[2])!, float: i+1, litera: tekClassRoom[3], nazvanie: tekClassRoom[4])
                         floatClassArray.append([classRoom])
                     }
                 }

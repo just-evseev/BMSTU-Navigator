@@ -36,6 +36,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     var way:[Int] = []
     var classroom:[(Int,Int)] = []
     var schet:Int = 0
+    let moveConstant = 4.85
+    var wayWaveArray = [(Int,Int)]()
     
     func fillModelArray() {
         modelArray = []
@@ -75,12 +77,9 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         super.viewDidLoad()
         
         mapScrollView.delegate = self
-        self.mapScrollView.minimumZoomScale = 1.0
-        self.mapScrollView.maximumZoomScale = 6.0
-        mapImageView.frame = CGRect(x: 0, y: 0, width: mapScrollView.frame.size.width, height: mapScrollView.frame.size.height)
-        mapImageView.image = UIImage (named: "Float\(changableFloatNumber)")
-        mapImageView.isUserInteractionEnabled = true
-        mapScrollView.addSubview(mapImageView)
+        mapScrollView.maximumZoomScale = 6.0
+        mapScrollView.minimumZoomScale = 1.0
+        mapScrollView.zoomScale = 1.0
         
         view.addSubview(upView)
         mapImageView.image = UIImage (named: "Float\(changableFloatNumber)")
@@ -100,6 +99,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         fillModelArray()
 
 
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return mapImageView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,6 +169,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             break
         }
         if (whereFromTextField.text != "") && (whereTextField.text != "") {
+            mapImageView.image = UIImage(named: "Float\(changableFloatNumber)")
             WaveAlgorithm(whereWave: Int(whereTextField.text!)!, whereFrom: Int(whereFromTextField.text!)!)
         }
         
@@ -178,13 +182,13 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
 
     }
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return self.mapImageView
-    }
+//    func viewForZooming(mapScrollView: UIScrollView) -> UIView? {
+//        return self.mapImageView
+//    }
     
     func WaveAlgorithm(whereWave: Int, whereFrom:Int){
         var whereWaveVar,whereFromVar:ClassRoom
-        whereWaveVar = ClassRoom(numb: 200, koordX: 97, koordY: 96, float: 2)
+        whereWaveVar = ClassRoom(numb: 200, koordX: 97, koordY: 96, float: 2, litera: "_", nazvanie: "_")
         whereFromVar = whereWaveVar
         
         for float in floatClassArray{
@@ -234,26 +238,94 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             var tekY = whereWaveVar.koordY
             let tekFloat = whereWaveVar.float-1
             counter = waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX]
+            wayWaveArray.append((tekX,tekY))
+
+//            let startingImage = mapImageView.image!
+//            UIGraphicsBeginImageContext(startingImage.size)
+//            startingImage.draw(at: CGPoint.zero)
+//            let context = UIGraphicsGetCurrentContext()!
+//            context.setLineWidth(2.0)
+//            context.setStrokeColor(UIColor.red.cgColor)
+//            context.move(to: CGPoint(x: Int(Double(tekX)*moveConstant), y: Int(Double(tekY)*moveConstant)))
+            
             print("counter = \(counter)")
             while counter > 2 {
                 counter -= 1
-                if waveArray[tekFloat][tekY][tekX+1] == counter {
+                if (waveArray[tekFloat][tekY][tekX+1] == counter) {
                     tekX+=1
-                    print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")}
-                else{ if waveArray[tekFloat][tekY][tekX-1] == counter {
+                    wayWaveArray.append((tekX,tekY))
+//                    context.addLine(to: CGPoint(x: Int(Double(tekX)*moveConstant), y: Int(Double(tekY)*moveConstant)))
+//                    print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")
+                    
+                }
+                else{ if (waveArray[tekFloat][tekY][tekX-1] == counter) {
                         tekX-=1
-                        print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")}
-                    else{ if waveArray[tekFloat][tekY+1][tekX] == counter {
+                        wayWaveArray.append((tekX,tekY))
+//                        context.addLine(to: CGPoint(x: Int(Double(tekX)*moveConstant), y: Int(Double(tekY)*moveConstant)))
+//                        print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")
+                    
+                }
+                    else{ if (waveArray[tekFloat][tekY+1][tekX] == counter) {
                             tekY+=1
-                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")}
+                            wayWaveArray.append((tekX,tekY))
+//                        context.addLine(to: CGPoint(x: Int(Double(tekX)*moveConstant), y: Int(Double(tekY)*moveConstant)))
+//                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")
+                    
+                    }
                         else{
                             tekY-=1
-                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")}
+                            wayWaveArray.append((tekX,tekY))
+//                            context.addLine(to: CGPoint(x: Int(Double(tekX)*moveConstant), y: Int(Double(tekY)*moveConstant)))
+//                            print("Float:\(tekFloat); X:\(tekX); Y\(tekY)")
+                            
+                        }
                     }
                 }
                 
             }
+//            context.strokePath()
+
+//            let myImage = UIGraphicsGetImageFromCurrentImageContext()
+//            UIGraphicsEndImageContext()
+//            mapImageView.image = myImage
+            
+            print(wayWaveArray)
+            var lustKoord = wayWaveArray[0]
+            for koord in wayWaveArray {
+                mapImageView.image = DrawOnImage(startingImage: mapImageView.image!, startKoord: lustKoord, moveToKoord: koord)
+                lustKoord = koord
+            }
         }
+    }
+    
+    func DrawOnImage(startingImage: UIImage, startKoord: (Int,Int), moveToKoord: (Int,Int)) -> UIImage {
+        
+        // Create a context of the starting image size and set it as the current one
+        UIGraphicsBeginImageContext(startingImage.size)
+        
+        // Draw the starting image in the current context as background
+        startingImage.draw(at: CGPoint.zero)
+        
+        // Get the current context
+        let context = UIGraphicsGetCurrentContext()!
+        
+        // Draw a red line
+        context.setLineWidth(2.0)
+        context.setStrokeColor(UIColor.red.cgColor)
+        print("X координата туда откуда идти линии \(Int(Double(startKoord.0) * moveConstant))")
+        print("Y координата туда откуда идти линии \(Int(Double(startKoord.1) * moveConstant))")
+        context.move(to: CGPoint(x: Int(Double(startKoord.0) * moveConstant), y: Int(Double(startKoord.1) * moveConstant)))
+        print("X координата туда куда идти линии \(Int(Double(moveToKoord.0) * moveConstant))")
+        print("Y координата туда куда идти линии \(Int(Double(moveToKoord.1) * moveConstant))")
+        context.addLine(to: CGPoint(x: Int(Double(moveToKoord.0) * moveConstant), y: Int(Double(moveToKoord.1) * moveConstant)))
+        context.strokePath()
+        
+        // Save the context as a new UIImage
+        let myImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // Return modified image
+        return myImage!
     }
     
 }
