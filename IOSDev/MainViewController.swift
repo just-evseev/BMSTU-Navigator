@@ -79,7 +79,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         mapScrollView.delegate = self
         mapScrollView.maximumZoomScale = 6.0
         mapScrollView.minimumZoomScale = 1.0
-        mapScrollView.zoomScale = 1.0
         
         view.addSubview(upView)
         mapImageView.image = UIImage (named: "Float\(changableFloatNumber)")
@@ -170,6 +169,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         }
         if (whereFromTextField.text != "") && (whereTextField.text != "") {
             mapImageView.image = UIImage(named: "Float\(changableFloatNumber)")
+            wayWaveArray.removeAll()
             WaveAlgorithm(whereWave: Int(whereTextField.text!)!, whereFrom: Int(whereFromTextField.text!)!)
         }
         
@@ -233,6 +233,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             var tekX = whereWaveVar.koordX
             var tekY = whereWaveVar.koordY
             let tekFloat = whereWaveVar.float-1
+            mapImageView.image = DrawOnImageCyrcle(startingImage: mapImageView.image!, startKoord: (Int(Double(whereFromVar.koordX) * moveConstant), Int(Double(whereFromVar.koordY) * moveConstant)), endKoord: (Int(Double(whereWaveVar.koordX) * moveConstant), Int(Double(whereWaveVar.koordY) * moveConstant)))
             counter = waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX]
             wayWaveArray.append((tekX,tekY))
             print("counter = \(counter)")
@@ -272,9 +273,32 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         
         context.setLineWidth(2.0)
         context.setStrokeColor(UIColor.red.cgColor)
-        context.move(to: CGPoint(x: Int(Double(startKoord.0) * moveConstant), y: Int(Double(startKoord.1) * moveConstant)))
-        context.addLine(to: CGPoint(x: Int(Double(moveToKoord.0) * moveConstant), y: Int(Double(moveToKoord.1) * moveConstant)))
+        context.move(to: CGPoint(x: Int(Double(startKoord.0) * moveConstant)+250, y: Int(Double(startKoord.1) * moveConstant)+250))
+        context.addLine(to: CGPoint(x: Int(Double(moveToKoord.0) * moveConstant)+250, y: Int(Double(moveToKoord.1) * moveConstant)+250))
         context.strokePath()
+        
+        let myImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return myImage!
+    }
+    
+    func DrawOnImageCyrcle(startingImage: UIImage, startKoord: (Int,Int), endKoord: (Int,Int)) -> UIImage {
+        
+        UIGraphicsBeginImageContext(startingImage.size)
+        startingImage.draw(at: CGPoint.zero)
+        let context = UIGraphicsGetCurrentContext()!
+
+        context.setStrokeColor(UIColor.green.cgColor)
+        context.setAlpha(0.8)
+        context.setLineWidth(8.0)
+        context.addEllipse(in: CGRect(x: startKoord.0+250, y: startKoord.1+250, width: 8, height: 8))
+        context.drawPath(using: .stroke)
+        
+        context.setStrokeColor(UIColor.blue.cgColor)
+        context.setAlpha(0.8)
+        context.setLineWidth(8.0)
+        context.addEllipse(in: CGRect(x: endKoord.0+250, y: endKoord.1+250, width: 8, height: 8))
+        context.drawPath(using: .stroke)
         
         let myImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
