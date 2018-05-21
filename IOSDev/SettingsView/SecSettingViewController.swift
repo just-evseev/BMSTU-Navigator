@@ -98,6 +98,4 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         _ = navigationController?.popViewController(animated: true)
 
     }
-    
-    //надо добавить переход назад при выборе какой-либо настройки
 }

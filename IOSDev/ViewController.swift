@@ -21,6 +21,8 @@ struct ClassRoom {
 var ref: DatabaseReference!
 var floatWaveArray = [[[Int]]]()
 var floatClassArray = [[ClassRoom]]()
+let prost = [[[Int]]]()
+
 
 class ViewController: UIViewController{
 
@@ -28,6 +30,7 @@ class ViewController: UIViewController{
     @IBOutlet weak var BmstuLogo: UIImageView!
     @IBOutlet weak var ButtonPressed: UIButton!
     
+    var downloadIdent = true
     
     func logoAnimate() {
         
@@ -37,23 +40,29 @@ class ViewController: UIViewController{
             self.view.layoutIfNeeded()
 
         }) { _ in
-            UIView.animate(withDuration: 0.5) {
-                self.ButtonPressed.alpha = 1.0
+            if (floatWaveArray == prost) {
+                let alert = UIAlertController(title: "Нет подключения", message: "Приложение будет работать в офлайн режиме", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "хорошо", style: .cancel, handler: { _ in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
+            self.ButtonPressed.alpha = 1.0
         }
+        
     }
     
     override func viewDidLoad() {
         self.ButtonPressed.alpha = 0.0
-        logoAnimate()
         ref = Database.database().reference()
-
+        
         for i in 0...10 {
             ref.child("Wave").child("Plan").child("Float\(i+1)").observe(DataEventType.value) { (snapshot) in
                 if let item = snapshot.value! as? [[Int]] {
                     floatWaveArray.append(item)
                 }
             }
+            
             ref.child("Wave").child("ClassRooms").child("Float\(i+1)").observe(DataEventType.value) { (snapshot) in
                 if let item = snapshot.value! as? [[String]] {
                     for tekClassRoom in item {
@@ -64,8 +73,11 @@ class ViewController: UIViewController{
             }
         }
         
+        logoAnimate()
         super.viewDidLoad()
     }
-   
 }
 
+func downloatDataBase() {
+    
+}

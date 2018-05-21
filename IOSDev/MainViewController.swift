@@ -191,22 +191,16 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             for classRoom in float{
                 if classRoom.numb==whereWave {
                     whereWaveVar=classRoom
-                    print("======куда======")
-                    print(whereWaveVar)
                 }
                 if classRoom.numb==whereFrom {
                     whereFromVar=classRoom
-                     print("======откуда======")
-                    print(whereFromVar)
                 }
             }
         }
         var waveArray = floatWaveArray
         var counter:Int = 0
         var flagWave:Bool = true
-        print("Этаж \(whereWaveVar.float-1); X=\(whereWaveVar.koordX),Y=\(whereWaveVar.koordY)")
-        print("То, куда мы 1 кладем (Должно быть 0): \(waveArray[whereFromVar.float-1][whereFromVar.koordY][whereFromVar.koordX])")
-        print("Тут должен быть 0: \(waveArray[whereWaveVar.float-1][whereWaveVar.koordX][whereWaveVar.koordY])")
+
         waveArray[whereFromVar.float-1][whereFromVar.koordY][whereFromVar.koordX] = 1
         while  (waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX] == 0)&&(flagWave) {
             flagWave = false
@@ -221,6 +215,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                             if waveArray[float][y][x-1] == 0 {waveArray[float][y][x-1] = counter+1}
                             if waveArray[float][y+1][x] == 0 {waveArray[float][y+1][x] = counter+1}
                             if waveArray[float][y-1][x] == 0 {waveArray[float][y-1][x] = counter+1}
+                            if waveArray[float][y+1][x+1] == 0 {waveArray[float][y+1][x+1] = counter+1}
+                            if waveArray[float][y+1][x-1] == 0 {waveArray[float][y+1][x-1] = counter+1}
+                            if waveArray[float][y-1][x+1] == 0 {waveArray[float][y-1][x+1] = counter+1}
+                            if waveArray[float][y-1][x-1] == 0 {waveArray[float][y-1][x-1] = counter+1}
                         }
                     }
                 }
@@ -251,9 +249,33 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                             tekY+=1
                             wayWaveArray.append((tekX,tekY))
                         }
-                        else{
+                        else{ if (waveArray[tekFloat][tekY-1][tekX+1] == counter) {
+                            tekX+=1
                             tekY-=1
                             wayWaveArray.append((tekX,tekY))
+                        }
+                            else{ if (waveArray[tekFloat][tekY-1][tekX-1] == counter) {
+                                tekY-=1
+                                tekX-=1
+                                wayWaveArray.append((tekX,tekY))
+                            }
+                                else{ if (waveArray[tekFloat][tekY+1][tekX-1] == counter) {
+                                    tekY+=1
+                                    tekX-=1
+                                    wayWaveArray.append((tekX,tekY))
+                                }
+                                    else{ if (waveArray[tekFloat][tekY+1][tekX+1] == counter) {
+                                        tekY+=1
+                                        tekX+=1
+                                        wayWaveArray.append((tekX,tekY))
+                                    }
+                                        else{
+                                            tekY-=1
+                                            wayWaveArray.append((tekX,tekY))
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

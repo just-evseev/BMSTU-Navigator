@@ -495,12 +495,13 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLq-Fu-i0L">
-                                <rect key="frame" x="164" y="597" width="46" height="30"/>
+                                <rect key="frame" x="157" y="597" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WmQ-hk-lAR"/>
-                                    <constraint firstAttribute="width" constant="46" id="jba-Ve-jkr"/>
+                                    <constraint firstAttribute="width" constant="60" id="jba-Ve-jkr"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Войти"/>
                                 <connections>
                                     <segue destination="j8E-oU-5GO" kind="show" id="nNX-gn-cfA"/>
                                 </connections>
