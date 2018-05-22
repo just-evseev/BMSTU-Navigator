@@ -27,7 +27,7 @@ class LibraryMapViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        newModelArray = modelArray
+        newModelArray = classArray
         
         switch settingIdentifier[0] {
         case "Русский":
@@ -59,7 +59,7 @@ class LibraryMapViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func AudButtonPressed(_ sender: UIButton) {
-        newModelArray = modelArray
+        newModelArray = classArray
         self.tableView.reloadData()
         AudButton.backgroundColor = UIColor(red: 245/255, green: 244/255, blue: 180/255, alpha: 1)
         PopPlaceButton.backgroundColor = UIColor.white

@@ -12,6 +12,7 @@ var numberFloat: Int = 2
 
 var modelArray = [AudCellModel]()
 var popPlaceArray = [AudCellModel]()
+var classArray = [AudCellModel]()
 var segIdent = 0
 var segLibraryIdent = 0
 var settingIdentifier = ["Русский", "Светлая"]
@@ -43,9 +44,38 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         modelArray = []
         for float in floatClassArray{
             for classRoom in float{
+                if classRoom.numb != 0 {
+                    let model = AudCellModel()
+                    model.title = String(classRoom.numb)
+                    modelArray.append(model)
+                }
+            }
+        }
+        for float in floatClassArray{
+            for classRoom in float{
+                if classRoom.nazvanie != "_" {
+                    let secondModel = AudCellModel()
+                    secondModel.title = String(classRoom.nazvanie)
+                    modelArray.append(secondModel)
+                }
+            }
+        }
+        classArray = []
+        for float in floatClassArray{
+            for classRoom in float{
                 let model = AudCellModel()
                 model.title = String(classRoom.numb)
-                modelArray.append(model)
+                classArray.append(model)
+            }
+        }
+        popPlaceArray = []
+        for float in floatClassArray{
+            for classRoom in float{
+                if classRoom.nazvanie != "_" {
+                    let secondModel = AudCellModel()
+                    secondModel.title = String(classRoom.nazvanie)
+                    popPlaceArray.append(secondModel)
+                }
             }
         }
     }
@@ -170,7 +200,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         if (whereFromTextField.text != "") && (whereTextField.text != "") {
             mapImageView.image = UIImage(named: "Float\(changableFloatNumber)")
             wayWaveArray.removeAll()
-            WaveAlgorithm(whereWave: Int(whereTextField.text!)!, whereFrom: Int(whereFromTextField.text!)!)
+            WaveAlgorithm(whereWave: whereTextField.text!, whereFrom: whereFromTextField.text!)
         }
         
         
@@ -182,18 +212,36 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
 
     }
     
-    func WaveAlgorithm(whereWave: Int, whereFrom:Int){
+    func WaveAlgorithm(whereWave:String, whereFrom:String){
         var whereWaveVar,whereFromVar:ClassRoom
         whereWaveVar = ClassRoom(numb: 200, koordX: 97, koordY: 96, float: 2, litera: "_", nazvanie: "_")
         whereFromVar = whereWaveVar
+        var whereExitIdent = true
+        var whereFromExitIdent = true
         
         for float in floatClassArray{
             for classRoom in float{
-                if classRoom.numb==whereWave {
+                if String(classRoom.numb) == whereWave {
                     whereWaveVar=classRoom
+                    whereExitIdent = false
                 }
-                if classRoom.numb==whereFrom {
+                if String(classRoom.numb) == whereFrom {
                     whereFromVar=classRoom
+                    whereFromExitIdent = false
+                }
+            }
+        }
+        if (whereFromExitIdent || whereExitIdent) {
+            for float in floatClassArray{
+                for classRoom in float{
+                    if String(classRoom.nazvanie) == whereWave {
+                        whereWaveVar=classRoom
+                        whereExitIdent = false
+                    }
+                    if String(classRoom.nazvanie) == whereFrom {
+                        whereFromVar=classRoom
+                        whereFromExitIdent = false
+                    }
                 }
             }
         }
@@ -209,7 +257,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 for y in 1...98 {
                     for x in 1...98 {
                         if waveArray[float][y][x] == counter {
-                            print("\(x),\(y); \(counter)")
                             flagWave = true
                             if waveArray[float][y][x+1] == 0 {waveArray[float][y][x+1] = counter+1}
                             if waveArray[float][y][x-1] == 0 {waveArray[float][y][x-1] = counter+1}
@@ -231,11 +278,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             var tekX = whereWaveVar.koordX
             var tekY = whereWaveVar.koordY
             let tekFloat = whereWaveVar.float-1
-            mapImageView.image = DrawOnImageCyrcle(startingImage: mapImageView.image!, startKoord: (Int(Double(whereFromVar.koordX) * moveConstant), Int(Double(whereFromVar.koordY) * moveConstant)), endKoord: (Int(Double(whereWaveVar.koordX) * moveConstant), Int(Double(whereWaveVar.koordY) * moveConstant)))
+        
             counter = waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX]
             wayWaveArray.append((tekX,tekY))
-            print("counter = \(counter)")
-            while counter > 2 {
+            while counter >= 1 {
                 counter -= 1
                 if (waveArray[tekFloat][tekY][tekX+1] == counter) {
                     tekX+=1
@@ -285,6 +331,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 mapImageView.image = DrawOnImage(startingImage: mapImageView.image!, startKoord: lustKoord, moveToKoord: koord)
                 lustKoord = koord
             }
+            mapImageView.image = DrawOnImageCyrcle(startingImage: mapImageView.image!, startKoord: (Int(Double(whereFromVar.koordX) * moveConstant), Int(Double(whereFromVar.koordY) * moveConstant)), endKoord: (Int(Double(whereWaveVar.koordX) * moveConstant), Int(Double(whereWaveVar.koordY) * moveConstant)))
         }
     }
     
@@ -294,7 +341,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         let context = UIGraphicsGetCurrentContext()!
         
         context.setLineWidth(2.0)
-        context.setStrokeColor(UIColor.red.cgColor)
+        context.setStrokeColor(UIColor.green.cgColor)
         context.move(to: CGPoint(x: Int(Double(startKoord.0) * moveConstant)+250, y: Int(Double(startKoord.1) * moveConstant)+250))
         context.addLine(to: CGPoint(x: Int(Double(moveToKoord.0) * moveConstant)+250, y: Int(Double(moveToKoord.1) * moveConstant)+250))
         context.strokePath()
@@ -308,19 +355,11 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         
         UIGraphicsBeginImageContext(startingImage.size)
         startingImage.draw(at: CGPoint.zero)
-        let context = UIGraphicsGetCurrentContext()!
 
-        context.setStrokeColor(UIColor.green.cgColor)
-        context.setAlpha(0.8)
-        context.setLineWidth(8.0)
-        context.addEllipse(in: CGRect(x: startKoord.0+250, y: startKoord.1+250, width: 8, height: 8))
-        context.drawPath(using: .stroke)
-        
-        context.setStrokeColor(UIColor.blue.cgColor)
-        context.setAlpha(0.8)
-        context.setLineWidth(8.0)
-        context.addEllipse(in: CGRect(x: endKoord.0+250, y: endKoord.1+250, width: 8, height: 8))
-        context.drawPath(using: .stroke)
+        let startImage = UIImage(named: "Start")
+        startImage!.draw(in: CGRect(x: startKoord.0 + 230, y: startKoord.1 + 220, width: 40, height: 40))
+        let finishImage = UIImage(named: "Finish")
+        finishImage!.draw(in: CGRect(x: endKoord.0+230, y: endKoord.1+230, width: 40, height: 40))
         
         let myImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

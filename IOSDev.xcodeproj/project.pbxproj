@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04709AE12077398D00D43416 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE02077398D00D43416 /* MainViewController.swift */; };
+		04709AE12077398D00D43416 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE02077398D00D43416 /* MapViewController.swift */; };
 		04709AE320776DC100D43416 /* LibraryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE220776DC000D43416 /* LibraryMapViewController.swift */; };
 		04709AE520776E1100D43416 /* EditMapTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE420776E1100D43416 /* EditMapTextViewController.swift */; };
 		04709AE72078D72F00D43416 /* AudCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04709AE62078D72F00D43416 /* AudCellModel.swift */; };
@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04709AE02077398D00D43416 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		04709AE02077398D00D43416 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		04709AE220776DC000D43416 /* LibraryMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryMapViewController.swift; sourceTree = "<group>"; };
 		04709AE420776E1100D43416 /* EditMapTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMapTextViewController.swift; sourceTree = "<group>"; };
 		04709AE62078D72F00D43416 /* AudCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudCellModel.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			children = (
 				048D9527206308FF009A9D39 /* AppDelegate.swift */,
 				048D9529206308FF009A9D39 /* ViewController.swift */,
-				04709AE02077398D00D43416 /* MainViewController.swift */,
+				04709AE02077398D00D43416 /* MapViewController.swift */,
 				04C437DC20AD55B6008E7649 /* InputView */,
 				04C437DA20AD5542008E7649 /* StoryBoards */,
 				04C437DB20AD5596008E7649 /* SettingsView */,
@@ -276,7 +276,7 @@
 				04C5F1652063C3BA003530B7 /* CustomTableViewCell.swift in Sources */,
 				04EAF3AD2063EDBF00D2C9A3 /* SettingTableViewCell.swift in Sources */,
 				04709AE320776DC100D43416 /* LibraryMapViewController.swift in Sources */,
-				04709AE12077398D00D43416 /* MainViewController.swift in Sources */,
+				04709AE12077398D00D43416 /* MapViewController.swift in Sources */,
 				04709AE72078D72F00D43416 /* AudCellModel.swift in Sources */,
 				04709AE520776E1100D43416 /* EditMapTextViewController.swift in Sources */,
 				048D952A206308FF009A9D39 /* ViewController.swift in Sources */,
