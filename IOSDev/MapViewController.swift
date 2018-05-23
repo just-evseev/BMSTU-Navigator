@@ -32,19 +32,22 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     @IBOutlet weak var whereTextField: UITextField!
     @IBOutlet weak var whereDictionButton: UIButton!
     @IBOutlet weak var whereFromDictionButton: UIButton!
-
+    @IBOutlet weak var floatLabel: UILabel!
+    
     var changableFloatNumber:Int = numberFloat
     var way:[Int] = []
     var classroom:[(Int,Int)] = []
     var schet:Int = 0
     let moveConstant = 5.0
-    var wayWaveArray = [(Int,Int)]()
+    var wayWaveArray = [[(Int,Int)]]()
+    var floatImageWave = [UIImage]()
+    
     
     func fillModelArray() {
         modelArray = []
         for float in floatClassArray{
             for classRoom in float{
-                if classRoom.numb != 0 {
+                if classRoom.numb != 1 {
                     let model = AudCellModel()
                     model.title = String(classRoom.numb)
                     modelArray.append(model)
@@ -63,9 +66,12 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         classArray = []
         for float in floatClassArray{
             for classRoom in float{
-                let model = AudCellModel()
-                model.title = String(classRoom.numb)
-                classArray.append(model)
+                if classRoom.numb != 1 {
+                    let model = AudCellModel()
+                    model.title = String(classRoom.numb)
+                    
+                    classArray.append(model)
+                }
             }
         }
         popPlaceArray = []
@@ -79,22 +85,34 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             }
         }
     }
+    
+    func updateImage(){
+        floatImageWave.removeAll()
+        floatImageWave.append(UIImage(named: "Float1")!)
+        for float in 1...11 {
+            floatImageWave.append(UIImage(named: "Float\(float)")!)
+        }
+    }
 
     @IBAction func WhereLibraryButtonPressed(_ sender: UIButton) {
         segLibraryIdent = 1
+        updateImage()
     }
     
 
     @IBAction func WhereFromLibraryButtonPressed(_ sender: UIButton) {
         segLibraryIdent = 2
+        updateImage()
     }
     
     @IBAction func WhereFromButtonPressed(_ sender: UIButton) {
         segIdent = 1
+        updateImage()
     }
     
     @IBAction func WhereButtonPressed(_ sender: UIButton) {
         segIdent = 2
+        updateImage()
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
@@ -103,6 +121,23 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         
         self.present(activityVC, animated: true, completion: nil)
     }
+    
+    @IBAction func plusButtonPressed(_ sender: Any) {
+        if changableFloatNumber<11{
+            changableFloatNumber+=1
+            mapImageView.image = floatImageWave[changableFloatNumber]
+            floatLabel.text = "\(changableFloatNumber) Этаж"
+        }
+    }
+    
+    @IBAction func minusButtonPressed(_ sender: Any) {
+        if changableFloatNumber>1{
+            changableFloatNumber-=1
+            mapImageView.image = floatImageWave[changableFloatNumber]
+            floatLabel.text = "\(changableFloatNumber) Этаж"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,8 +145,21 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         mapScrollView.maximumZoomScale = 6.0
         mapScrollView.minimumZoomScale = 1.0
         
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        wayWaveArray.append([])
+        
         view.addSubview(upView)
-        mapImageView.image = UIImage (named: "Float\(changableFloatNumber)")
+        updateImage()
+        mapImageView.image = floatImageWave[changableFloatNumber]
         upView.superview?.bringSubview(toFront: upView)
         
         mainView.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
@@ -157,6 +205,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 whereFromTextField.textColor = UIColor.black
                 whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
                 whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
+                floatLabel.textColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
             case "Темная":
                 mainView.backgroundColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
                 upView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
@@ -166,6 +215,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 whereFromTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
                 whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
                 whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
+                floatLabel.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
             default:
                 break
             }
@@ -180,6 +230,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 whereFromTextField.textColor = UIColor.black
                 whereTextField.attributedPlaceholder = NSAttributedString(string: "where", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
                 whereFromTextField.attributedPlaceholder = NSAttributedString(string: "where from", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
+                
             case "Dark":
                 mainView.backgroundColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
                 upView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
@@ -198,8 +249,20 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             break
         }
         if (whereFromTextField.text != "") && (whereTextField.text != "") {
-            mapImageView.image = UIImage(named: "Float\(changableFloatNumber)")
+            updateImage()
+            mapImageView.image = floatImageWave[changableFloatNumber]
             wayWaveArray.removeAll()
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
+            wayWaveArray.append([])
             WaveAlgorithm(whereWave: whereTextField.text!, whereFrom: whereFromTextField.text!)
         }
         
@@ -247,92 +310,313 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         }
         var waveArray = floatWaveArray
         var counter:Int = 0
-        var flagWave:Bool = true
-
+//        var float = whereFromVar.float
+        
         waveArray[whereFromVar.float-1][whereFromVar.koordY][whereFromVar.koordX] = 1
-        while  (waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX] == 0)&&(flagWave) {
-            flagWave = false
+        while  (waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX] == 0) {
             counter += 1
-            for float in 1...1 {//<- тут перечисление уже готовых этажей для обработки
-                for y in 1...98 {
-                    for x in 1...98 {
-                        if waveArray[float][y][x] == counter {
-                            flagWave = true
-                            if waveArray[float][y][x+1] == 0 {waveArray[float][y][x+1] = counter+1}
-                            if waveArray[float][y][x-1] == 0 {waveArray[float][y][x-1] = counter+1}
-                            if waveArray[float][y+1][x] == 0 {waveArray[float][y+1][x] = counter+1}
-                            if waveArray[float][y-1][x] == 0 {waveArray[float][y-1][x] = counter+1}
-                            if waveArray[float][y+1][x+1] == 0 {waveArray[float][y+1][x+1] = counter+1}
-                            if waveArray[float][y+1][x-1] == 0 {waveArray[float][y+1][x-1] = counter+1}
-                            if waveArray[float][y-1][x+1] == 0 {waveArray[float][y-1][x+1] = counter+1}
-                            if waveArray[float][y-1][x-1] == 0 {waveArray[float][y-1][x-1] = counter+1}
-                        }
-                    }
-                }
-            }
+            waveArray = ZapolnWaveArray(waveArrayLet: waveArray, counter: counter)
         }
         
-        if !flagWave {
-            print ("Невозможно построить маршрут между выбранными аудиториями")
-        }else{
-            var tekX = whereWaveVar.koordX
-            var tekY = whereWaveVar.koordY
-            let tekFloat = whereWaveVar.float-1
-        
-            counter = waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX]
-            wayWaveArray.append((tekX,tekY))
-            while counter >= 1 {
+        var flag = false// Потом надо будет пофиксить это говно
+        var tekX = whereWaveVar.koordX
+        var tekY = whereWaveVar.koordY
+        var tekFloat = whereWaveVar.float-1
+    
+        counter = waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX]
+        wayWaveArray[tekFloat].append((tekX,tekY))
+        while counter > 1 {
+            switch counter-1 {
+            case waveArray[tekFloat][tekY][tekX+1]:
+                tekX+=1
+                wayWaveArray[tekFloat].append((tekX,tekY))
                 counter -= 1
-                if (waveArray[tekFloat][tekY][tekX+1] == counter) {
-                    tekX+=1
-                    wayWaveArray.append((tekX,tekY))
-                }
-                else{ if (waveArray[tekFloat][tekY][tekX-1] == counter) {
-                        tekX-=1
-                        wayWaveArray.append((tekX,tekY))
+            case waveArray[tekFloat][tekY][tekX-1]:
+                tekX-=1
+                wayWaveArray[tekFloat].append((tekX,tekY))
+                counter -= 1
+            case waveArray[tekFloat][tekY+1][tekX]:
+                tekY+=1
+                wayWaveArray[tekFloat].append((tekX,tekY))
+                counter -= 1
+            case waveArray[tekFloat][tekY-1][tekX]:
+                tekY-=1
+                wayWaveArray[tekFloat].append((tekX,tekY))
+                counter -= 1
+            case waveArray[tekFloat][tekY-1][tekX+1]:
+                tekX+=1
+                tekY-=1
+                wayWaveArray[tekFloat].append((tekX,tekY))
+                counter -= 1
+            case waveArray[tekFloat][tekY-1][tekX-1]:
+                tekY-=1
+                tekX-=1
+                wayWaveArray[tekFloat].append((tekX,tekY))
+                counter -= 1
+            case waveArray[tekFloat][tekY+1][tekX-1]:
+                tekY+=1
+                tekX-=1
+                wayWaveArray[tekFloat].append((tekX,tekY))
+                counter -= 1
+            case waveArray[tekFloat][tekY+1][tekX+1]:
+                tekY+=1
+                tekX+=1
+                wayWaveArray[tekFloat].append((tekX,tekY))
+                counter -= 1
+            default:
+                switch waveArray[tekFloat][tekY][tekX+1]{
+                case -2:
+                    if (tekFloat-1>0) {
+                        if waveArray[tekFloat-1][tekY][tekX+2] == counter-5 {tekX+=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat-1][tekY][tekX] == counter-5 {tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat-1][tekY+1][tekX+1] == counter-5 {tekX+=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat-1][tekY-1][tekX+1] == counter-5 {tekX+=1;tekY-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                     }
-                    else{ if (waveArray[tekFloat][tekY+1][tekX] == counter) {
-                            tekY+=1
-                            wayWaveArray.append((tekX,tekY))
+                    if (tekFloat+1<3) {
+                        if waveArray[tekFloat+1][tekY][tekX+2] == counter-5 {tekX+=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat+1][tekY][tekX] == counter-5 {tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat+1][tekY+1][tekX+1] == counter-5 {tekX+=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat+1][tekY-1][tekX+1] == counter-5 {tekX+=1;tekY-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                    }
+                    flag = true // Потом надо будет пофиксить это говно
+                default:
+                    switch waveArray[tekFloat][tekY][tekX-1]{
+                    case -2:
+                        if (tekFloat-1>0) {
+                            if waveArray[tekFloat-1][tekY][tekX] == counter-5 {tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat-1][tekY][tekX-2] == counter-5 {tekX-=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat-1][tekY+1][tekX-1] == counter-5 {tekX-=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat-1][tekY-1][tekX-1] == counter-5 {tekX-=1;tekY-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                         }
-                        else{ if (waveArray[tekFloat][tekY-1][tekX+1] == counter) {
-                            tekX+=1
-                            tekY-=1
-                            wayWaveArray.append((tekX,tekY))
+                        if (tekFloat+1<3) {
+                            if waveArray[tekFloat+1][tekY][tekX] == counter-5 {tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat+1][tekY][tekX-2] == counter-5 {tekX-=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat+1][tekY+1][tekX-1] == counter-5 {tekX-=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat+1][tekY-1][tekX-1] == counter-5 {tekX-=1;tekY-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                         }
-                            else{ if (waveArray[tekFloat][tekY-1][tekX-1] == counter) {
-                                tekY-=1
-                                tekX-=1
-                                wayWaveArray.append((tekX,tekY))
+                        flag = true // Потом надо будет пофиксить это говно
+                    default:
+                        switch waveArray[tekFloat][tekY+1][tekX]{
+                        case -2:
+                            if (tekFloat-1>0) {
+                                if waveArray[tekFloat-1][tekY+1][tekX+1] == counter-5 {tekX+=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat-1][tekY+1][tekX-1] == counter-5 {tekY+=1;tekX-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat-1][tekY+2][tekX] == counter-5 {tekY+=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat-1][tekY][tekX] == counter-5 {tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                             }
-                                else{ if (waveArray[tekFloat][tekY+1][tekX-1] == counter) {
-                                    tekY+=1
-                                    tekX-=1
-                                    wayWaveArray.append((tekX,tekY))
+                            if (tekFloat+1<3) {
+                                if waveArray[tekFloat+1][tekY+1][tekX+1] == counter-5 {tekX+=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat+1][tekY+1][tekX-1] == counter-5 {tekY+=1;tekX-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat+1][tekY+2][tekX] == counter-5 {tekY+=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat+1][tekY][tekX] == counter-5 {tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            }
+                            flag = true // Потом надо будет пофиксить это говно
+                        default:
+                            switch waveArray[tekFloat][tekY-1][tekX]{
+                            case -2:
+                                if (tekFloat-1>0) {
+                                    if waveArray[tekFloat-1][tekY-1][tekX+1] == counter-5 {tekX-=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat-1][tekY-1][tekX-1] == counter-5 {tekY-=1;tekX-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat-1][tekY][tekX] == counter-5 {tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat-1][tekY-2][tekX] == counter-5 {tekY-=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                                 }
-                                    else{ if (waveArray[tekFloat][tekY+1][tekX+1] == counter) {
-                                        tekY+=1
-                                        tekX+=1
-                                        wayWaveArray.append((tekX,tekY))
-                                    }
-                                        else{
-                                            tekY-=1
-                                            wayWaveArray.append((tekX,tekY))
-                                        }
-                                    }
+                                if (tekFloat+1<3) {
+                                    if waveArray[tekFloat+1][tekY-1][tekX+1] == counter-5 {tekX-=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat+1][tekY-1][tekX-1] == counter-5 {tekY-=1;tekX-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat+1][tekY][tekX] == counter-5 {tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat+1][tekY-2][tekX] == counter-5 {tekY-=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                                 }
+                                flag = true // Потом надо будет пофиксить это говно
+                            default:
+                                break
                             }
                         }
                     }
                 }
             }
-            var lustKoord = wayWaveArray[0]
-            for koord in wayWaveArray {
-                mapImageView.image = DrawOnImage(startingImage: mapImageView.image!, startKoord: lustKoord, moveToKoord: koord)
-                lustKoord = koord
-            }
-            mapImageView.image = DrawOnImageCyrcle(startingImage: mapImageView.image!, startKoord: (Int(Double(whereFromVar.koordX) * moveConstant), Int(Double(whereFromVar.koordY) * moveConstant)), endKoord: (Int(Double(whereWaveVar.koordX) * moveConstant), Int(Double(whereWaveVar.koordY) * moveConstant)))
+            
         }
+        print(wayWaveArray[1])
+        print(wayWaveArray[2])
+        if flag {
+            for float in 1...2 {
+                var lustKoord = wayWaveArray[float][0]
+                for koord in wayWaveArray[float] {
+                    floatImageWave[float+1] = DrawOnImage(startingImage: floatImageWave[float+1], startKoord: lustKoord, moveToKoord: koord)
+                    lustKoord = koord
+                }
+            }
+        } else {
+            for float in 1...1 {
+                var lustKoord = wayWaveArray[float][0]
+                for koord in wayWaveArray[float] {
+                    floatImageWave[float+1] = DrawOnImage(startingImage: floatImageWave[float+1], startKoord: lustKoord, moveToKoord: koord)
+                    lustKoord = koord
+                }
+            }
+        }
+        
+        print(changableFloatNumber)
+        floatImageWave[whereFromVar.float] = DrawOnImageStartCyrcle(startingImage: floatImageWave[whereFromVar.float], startKoord: (Int(Double(whereFromVar.koordX) * moveConstant), Int(Double(whereFromVar.koordY) * moveConstant)))
+        floatImageWave[whereWaveVar.float] = DrawOnImageEndCyrcle(startingImage: floatImageWave[whereWaveVar.float], endKoord: (Int(Double(whereWaveVar.koordX) * moveConstant), Int(Double(whereWaveVar.koordY) * moveConstant)))
+        mapImageView.image = floatImageWave[changableFloatNumber]
+    }
+    
+    func ZapolnWaveArray(waveArrayLet: [[[Int]]], counter: Int) -> [[[Int]]]{
+        var waveArray = waveArrayLet
+        for float in 1...2{//<----------------------------------- Тут перечисляются этажи
+            for y in 1...98 {
+                for x in 1...98 {
+                    if waveArray[float][y][x] == counter {
+                        if waveArray[float][y][x+1] == 0 {
+                            waveArray[float][y][x+1] = counter+1
+                        } else {
+                            if waveArray[float][y][x+1] == -2 {
+                                if (float-1>0) {
+                                    if waveArray[float-1][y][x+2] == 0 {waveArray[float-1][y][x+2] = counter+5}
+                                    if waveArray[float-1][y][x] == 0 {waveArray[float-1][y][x] = counter+5}
+                                    if waveArray[float-1][y+2][x] == 0 {waveArray[float-1][y+2][x] = counter+5}
+                                    if waveArray[float-1][y][x] == 0 {waveArray[float-1][y][x] = counter+5}
+                                }
+                                if (float+1<3) {
+                                    if waveArray[float+1][y][x+2] == 0 {waveArray[float+1][y][x+2] = counter+5}
+                                    if waveArray[float+1][y][x] == 0 {waveArray[float+1][y][x] = counter+5}
+                                    if waveArray[float+1][y+1][x+1] == 0 {waveArray[float+1][y+1][x+1] = counter+5}
+                                    if waveArray[float+1][y-1][x+1] == 0 {waveArray[float+1][y-1][x+1] = counter+5}
+                                }
+                            }
+                        }
+                        if waveArray[float][y][x-1] == 0 {
+                            waveArray[float][y][x-1] = counter+1
+                        } else {
+                            if waveArray[float][y][x-1] == -2 {
+                                if (float-1>0) {
+                                    if waveArray[float-1][y][x] == 0 {waveArray[float-1][y][x] = counter+5}
+                                    if waveArray[float-1][y][x-2] == 0 {waveArray[float-1][y][x-2] = counter+5}
+                                    if waveArray[float-1][y+1][x-1] == 0 {waveArray[float-1][y+1][x-1] = counter+5}
+                                    if waveArray[float-1][y-1][x-1] == 0 {waveArray[float-1][y-1][x-1] = counter+5}
+                                }
+                                if (float+1<3) {
+                                    if waveArray[float+1][y][x] == 0 {waveArray[float+1][y][x] = counter+5}
+                                    if waveArray[float+1][y][x-2] == 0 {waveArray[float+1][y][x-2] = counter+5}
+                                    if waveArray[float+1][y+1][x-1] == 0 {waveArray[float+1][y+1][x-1] = counter+5}
+                                    if waveArray[float+1][y-1][x-1] == 0 {waveArray[float+1][y-1][x-1] = counter+5}
+                                }
+                            }
+                        }
+                        if waveArray[float][y+1][x] == 0 {
+                            waveArray[float][y+1][x] = counter+1
+                        } else {
+                            if waveArray[float][y+1][x] == -2 {
+                                if (float-1>0) {
+                                    if waveArray[float-1][y+1][x+1] == 0 {waveArray[float-1][y+1][x+1] = counter+5}
+                                    if waveArray[float-1][y+1][x-1] == 0 {waveArray[float-1][y+1][x-1] = counter+5}
+                                    if waveArray[float-1][y+2][x] == 0 {waveArray[float-1][y+2][x] = counter+5}
+                                    if waveArray[float-1][y][x] == 0 {waveArray[float-1][y][x] = counter+5}
+                                }
+                                if (float+1<3) {
+                                    if waveArray[float+1][y+1][x+1] == 0 {waveArray[float+1][y+1][x+1] = counter+5}
+                                    if waveArray[float+1][y+1][x-1] == 0 {waveArray[float+1][y+1][x-1] = counter+5}
+                                    if waveArray[float+1][y+2][x] == 0 {waveArray[float+1][y+2][x] = counter+5}
+                                    if waveArray[float+1][y][x] == 0 {waveArray[float+1][y][x] = counter+5}
+                                }
+                            }
+                        }
+                        if waveArray[float][y-1][x] == 0 {
+                            waveArray[float][y-1][x] = counter+1
+                        } else {
+                            if waveArray[float][y-1][x] == -2 {
+                                if (float-1>0) {
+                                    if waveArray[float-1][y-1][x+1] == 0 {waveArray[float-1][y-1][x+1] = counter+5}
+                                    if waveArray[float-1][y-1][x-1] == 0 {waveArray[float-1][y-1][x-1] = counter+5}
+                                    if waveArray[float-1][y][x] == 0 {waveArray[float-1][y][x] = counter+5}
+                                    if waveArray[float-1][y-2][x] == 0 {waveArray[float-1][y-2][x] = counter+5}
+                                }
+                                if (float+1<3) {
+                                    if waveArray[float+1][y-1][x+1] == 0 {waveArray[float+1][y-1][x+1] = counter+5}
+                                    if waveArray[float+1][y-1][x-1] == 0 {waveArray[float+1][y-1][x-1] = counter+5}
+                                    if waveArray[float+1][y][x] == 0 {waveArray[float+1][y][x] = counter+5}
+                                    if waveArray[float+1][y-2][x] == 0 {waveArray[float+1][y-2][x] = counter+5}
+                                }
+                            }
+                        }
+                        if waveArray[float][y+1][x+1] == 0 {
+                            waveArray[float][y+1][x+1] = counter+1
+                        } else {
+                            if waveArray[float][y+1][x+1] == -2 {
+                                if (float-1>0) {
+                                    if waveArray[float-1][y+1][x+2] == 0 {waveArray[float-1][y+1][x+2] = counter+5}
+                                    if waveArray[float-1][y+1][x] == 0 {waveArray[float-1][y+1][x] = counter+5}
+                                    if waveArray[float-1][y+2][x+1] == 0 {waveArray[float-1][y+2][x+1] = counter+5}
+                                    if waveArray[float-1][y][x+1] == 0 {waveArray[float-1][y][x+1] = counter+5}
+                                }
+                                if (float+1<3) {
+                                    if waveArray[float+1][y+1][x+2] == 0 {waveArray[float+1][y+1][x+2] = counter+5}
+                                    if waveArray[float+1][y+1][x] == 0 {waveArray[float+1][y+1][x] = counter+5}
+                                    if waveArray[float+1][y+2][x+1] == 0 {waveArray[float+1][y+2][x+1] = counter+5}
+                                    if waveArray[float+1][y][x+1] == 0 {waveArray[float+1][y][x+1] = counter+5}
+                                }
+                            }
+                        }      //<3 <3 <3 ANUTA+ILYUSHA=<3 <3 <3 <3 <3
+                        if waveArray[float][y+1][x-1] == 0 {
+                            waveArray[float][y+1][x-1] = counter+1
+                        } else {
+                            if waveArray[float][y+1][x-1] == -2 {
+                                if (float-1>0) {
+                                    if waveArray[float-1][y+1][x] == 0 {waveArray[float-1][y+1][x] = counter+5}
+                                    if waveArray[float-1][y+1][x-2] == 0 {waveArray[float-1][y+1][x-2] = counter+5}
+                                    if waveArray[float-1][y+2][x-1] == 0 {waveArray[float-1][y+2][x-1] = counter+5}
+                                    if waveArray[float-1][y][x-1] == 0 {waveArray[float-1][y][x-1] = counter+5}
+                                }
+                                if (float+1<3) {
+                                    if waveArray[float+1][y+1][x] == 0 {waveArray[float+1][y+1][x] = counter+5}
+                                    if waveArray[float+1][y+1][x-2] == 0 {waveArray[float+1][y+1][x-2] = counter+5}
+                                    if waveArray[float+1][y+2][x-1] == 0 {waveArray[float+1][y+2][x-1] = counter+5}
+                                    if waveArray[float+1][y][x-1] == 0 {waveArray[float+1][y][x-1] = counter+5}
+                                }
+                            }
+                        }
+                        if waveArray[float][y-1][x+1] == 0 {
+                            waveArray[float][y-1][x+1] = counter+1
+                        } else {
+                            if waveArray[float][y-1][x+1] == -2 {
+                                if (float-1>0) {
+                                    if waveArray[float-1][y-1][x+2] == 0 {waveArray[float-1][y-1][x+2] = counter+5}
+                                    if waveArray[float-1][y-1][x] == 0 {waveArray[float-1][y-1][x] = counter+5}
+                                    if waveArray[float-1][y][x+1] == 0 {waveArray[float-1][y][x+1] = counter+5}
+                                    if waveArray[float-1][y-2][x+1] == 0 {waveArray[float-1][y-2][x+1] = counter+5}
+                                }
+                                if (float+1<3) {
+                                    if waveArray[float+1][y-1][x+2] == 0 {waveArray[float+1][y-1][x+2] = counter+5}
+                                    if waveArray[float+1][y-1][x] == 0 {waveArray[float+1][y-1][x] = counter+5}
+                                    if waveArray[float+1][y][x+1] == 0 {waveArray[float+1][y][x+1] = counter+5}
+                                    if waveArray[float+1][y-2][x+1] == 0 {waveArray[float+1][y-2][x+1] = counter+5}
+                                }
+                            }
+                        }
+                        if waveArray[float][y-1][x-1] == 0 {
+                            waveArray[float][y-1][x-1] = counter+1
+                        } else {
+                            if waveArray[float][y-1][x-1] == 0 {
+                                if (float-1>0) {
+                                    if waveArray[float-1][y-1][x] == 0 {waveArray[float-1][y-1][x] = counter+5}
+                                    if waveArray[float-1][y-1][x-2] == 0 {waveArray[float-1][y-1][x-2] = counter+5}
+                                    if waveArray[float-1][y][x-1] == 0 {waveArray[float-1][y][x-1] = counter+5}
+                                    if waveArray[float-1][y-2][x-1] == 0 {waveArray[float-1][y-2][x-1] = counter+5}
+                                }
+                                if (float+1<3) {
+                                    if waveArray[float+1][y-1][x] == 0 {waveArray[float+1][y-1][x] = counter+5}
+                                    if waveArray[float+1][y-1][x-2] == 0 {waveArray[float+1][y-1][x-2] = counter+5}
+                                    if waveArray[float+1][y][x-1] == 0 {waveArray[float+1][y][x-1] = counter+5}
+                                    if waveArray[float+1][y-2][x-1] == 0 {waveArray[float+1][y-2][x-1] = counter+5}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return waveArray
     }
     
     func DrawOnImage(startingImage: UIImage, startKoord: (Int,Int), moveToKoord: (Int,Int)) -> UIImage {
@@ -340,8 +624,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         startingImage.draw(at: CGPoint.zero)
         let context = UIGraphicsGetCurrentContext()!
         
-        context.setLineWidth(2.0)
-        context.setStrokeColor(UIColor.green.cgColor)
+        context.setLineWidth(4.0)
+        context.setStrokeColor(UIColor.red.cgColor)
         context.move(to: CGPoint(x: Int(Double(startKoord.0) * moveConstant)+250, y: Int(Double(startKoord.1) * moveConstant)+250))
         context.addLine(to: CGPoint(x: Int(Double(moveToKoord.0) * moveConstant)+250, y: Int(Double(moveToKoord.1) * moveConstant)+250))
         context.strokePath()
@@ -351,13 +635,25 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         return myImage!
     }
     
-    func DrawOnImageCyrcle(startingImage: UIImage, startKoord: (Int,Int), endKoord: (Int,Int)) -> UIImage {
+    func DrawOnImageStartCyrcle(startingImage: UIImage, startKoord: (Int,Int)) -> UIImage {
         
         UIGraphicsBeginImageContext(startingImage.size)
         startingImage.draw(at: CGPoint.zero)
 
         let startImage = UIImage(named: "Start")
-        startImage!.draw(in: CGRect(x: startKoord.0 + 230, y: startKoord.1 + 220, width: 40, height: 40))
+        startImage!.draw(in: CGRect(x: startKoord.0 + 230, y: startKoord.1 + 210, width: 40, height: 40))
+        
+        
+        let myImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return myImage!
+    }
+    
+    func DrawOnImageEndCyrcle(startingImage: UIImage, endKoord: (Int,Int)) -> UIImage {
+        
+        UIGraphicsBeginImageContext(startingImage.size)
+        startingImage.draw(at: CGPoint.zero)
+        
         let finishImage = UIImage(named: "Finish")
         finishImage!.draw(in: CGRect(x: endKoord.0+230, y: endKoord.1+230, width: 40, height: 40))
         
