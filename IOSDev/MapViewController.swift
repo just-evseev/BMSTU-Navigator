@@ -436,9 +436,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             }
             
         }
-        print(wayWaveArray[1])
-        print(wayWaveArray[2])
-        if flag {
+        if flag {// ну это зашквар конечно сори
             for float in 1...2 {
                 var lustKoord = wayWaveArray[float][0]
                 for koord in wayWaveArray[float] {
@@ -456,7 +454,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             }
         }
         
-        print(changableFloatNumber)
         floatImageWave[whereFromVar.float] = DrawOnImageStartCyrcle(startingImage: floatImageWave[whereFromVar.float], startKoord: (Int(Double(whereFromVar.koordX) * moveConstant), Int(Double(whereFromVar.koordY) * moveConstant)))
         floatImageWave[whereWaveVar.float] = DrawOnImageEndCyrcle(startingImage: floatImageWave[whereWaveVar.float], endKoord: (Int(Double(whereWaveVar.koordX) * moveConstant), Int(Double(whereWaveVar.koordY) * moveConstant)))
         mapImageView.image = floatImageWave[changableFloatNumber]
