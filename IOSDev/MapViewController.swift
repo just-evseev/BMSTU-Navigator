@@ -322,6 +322,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         var tekX = whereWaveVar.koordX
         var tekY = whereWaveVar.koordY
         var tekFloat = whereWaveVar.float-1
+        var stairsDrawArray = [(Int, Int, Int, Int)]()
     
         counter = waveArray[whereWaveVar.float-1][whereWaveVar.koordY][whereWaveVar.koordX]
         wayWaveArray[tekFloat].append((tekX,tekY))
@@ -367,64 +368,64 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 switch waveArray[tekFloat][tekY][tekX+1]{
                 case -2:
                     if (tekFloat-1>0) {
-                        if waveArray[tekFloat-1][tekY][tekX+2] == counter-5 {tekX+=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                        if waveArray[tekFloat-1][tekY][tekX] == counter-5 {tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                        if waveArray[tekFloat-1][tekY+1][tekX+1] == counter-5 {tekX+=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                        if waveArray[tekFloat-1][tekY-1][tekX+1] == counter-5 {tekX+=1;tekY-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat-1][tekY][tekX+2] == counter-5 {stairsDrawArray.append((tekY, tekX+1, tekFloat, 0));tekX+=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat-1][tekY][tekX] == counter-5 {stairsDrawArray.append((tekY, tekX+1, tekFloat, 0));tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat-1][tekY+1][tekX+1] == counter-5 {stairsDrawArray.append((tekY, tekX+1, tekFloat, 0));tekX+=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat-1][tekY-1][tekX+1] == counter-5 {stairsDrawArray.append((tekY, tekX+1, tekFloat, 0));tekX+=1;tekY-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                     }
                     if (tekFloat+1<3) {
-                        if waveArray[tekFloat+1][tekY][tekX+2] == counter-5 {tekX+=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                        if waveArray[tekFloat+1][tekY][tekX] == counter-5 {tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                        if waveArray[tekFloat+1][tekY+1][tekX+1] == counter-5 {tekX+=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                        if waveArray[tekFloat+1][tekY-1][tekX+1] == counter-5 {tekX+=1;tekY-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat+1][tekY][tekX+2] == counter-5 {stairsDrawArray.append((tekY, tekX+1, tekFloat, 1));tekX+=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat+1][tekY][tekX] == counter-5 {stairsDrawArray.append((tekY, tekX+1, tekFloat, 1));tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat+1][tekY+1][tekX+1] == counter-5 {stairsDrawArray.append((tekY, tekX+1, tekFloat, 1));tekX+=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if waveArray[tekFloat+1][tekY-1][tekX+1] == counter-5 {stairsDrawArray.append((tekY, tekX+1, tekFloat, 1));tekX+=1;tekY-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                     }
                     flag = true // Потом надо будет пофиксить это говно
                 default:
                     switch waveArray[tekFloat][tekY][tekX-1]{
                     case -2:
-                        if (tekFloat-1>0) {
-                            if waveArray[tekFloat-1][tekY][tekX] == counter-5 {tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                            if waveArray[tekFloat-1][tekY][tekX-2] == counter-5 {tekX-=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                            if waveArray[tekFloat-1][tekY+1][tekX-1] == counter-5 {tekX-=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                            if waveArray[tekFloat-1][tekY-1][tekX-1] == counter-5 {tekX-=1;tekY-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if ((tekFloat-1) >= 1) {
+                            if waveArray[tekFloat-1][tekY][tekX] == counter-5 {stairsDrawArray.append((tekY, tekX-1, tekFloat, 0));tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat-1][tekY][tekX-2] == counter-5 {stairsDrawArray.append((tekY, tekX-1, tekFloat, 0));tekX-=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat-1][tekY+1][tekX-1] == counter-5 {stairsDrawArray.append((tekY, tekX-1, tekFloat, 0));tekX-=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat-1][tekY-1][tekX-1] == counter-5 {stairsDrawArray.append((tekY, tekX-1, tekFloat, 0));tekX-=1;tekY-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                         }
-                        if (tekFloat+1<3) {
-                            if waveArray[tekFloat+1][tekY][tekX] == counter-5 {tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                            if waveArray[tekFloat+1][tekY][tekX-2] == counter-5 {tekX-=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                            if waveArray[tekFloat+1][tekY+1][tekX-1] == counter-5 {tekX-=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                            if waveArray[tekFloat+1][tekY-1][tekX-1] == counter-5 {tekX-=1;tekY-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                        if ((tekFloat+1) <= 2) {
+                            if waveArray[tekFloat+1][tekY][tekX] == counter-5 {stairsDrawArray.append((tekY, tekX-1, tekFloat, 1));tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat+1][tekY][tekX-2] == counter-5 {stairsDrawArray.append((tekY, tekX-1, tekFloat, 1));tekX-=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat+1][tekY+1][tekX-1] == counter-5 {stairsDrawArray.append((tekY, tekX-1, tekFloat, 1));tekX-=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                            if waveArray[tekFloat+1][tekY-1][tekX-1] == counter-5 {stairsDrawArray.append((tekY, tekX-1, tekFloat, 1));tekX-=1;tekY-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                         }
                         flag = true // Потом надо будет пофиксить это говно
                     default:
                         switch waveArray[tekFloat][tekY+1][tekX]{
                         case -2:
                             if (tekFloat-1>0) {
-                                if waveArray[tekFloat-1][tekY+1][tekX+1] == counter-5 {tekX+=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                if waveArray[tekFloat-1][tekY+1][tekX-1] == counter-5 {tekY+=1;tekX-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                if waveArray[tekFloat-1][tekY+2][tekX] == counter-5 {tekY+=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                if waveArray[tekFloat-1][tekY][tekX] == counter-5 {tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat-1][tekY+1][tekX+1] == counter-5 {stairsDrawArray.append((tekY+1, tekX, tekFloat, 0));tekX+=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat-1][tekY+1][tekX-1] == counter-5 {stairsDrawArray.append((tekY+1, tekX, tekFloat, 0));tekY+=1;tekX-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat-1][tekY+2][tekX] == counter-5 {stairsDrawArray.append((tekY+1, tekX, tekFloat, 0));tekY+=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat-1][tekY][tekX] == counter-5 {stairsDrawArray.append((tekY+1, tekX, tekFloat, 0));tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                             }
                             if (tekFloat+1<3) {
-                                if waveArray[tekFloat+1][tekY+1][tekX+1] == counter-5 {tekX+=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                if waveArray[tekFloat+1][tekY+1][tekX-1] == counter-5 {tekY+=1;tekX-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                if waveArray[tekFloat+1][tekY+2][tekX] == counter-5 {tekY+=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                if waveArray[tekFloat+1][tekY][tekX] == counter-5 {tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat+1][tekY+1][tekX+1] == counter-5 {stairsDrawArray.append((tekY+1, tekX, tekFloat, 1));tekX+=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat+1][tekY+1][tekX-1] == counter-5 {stairsDrawArray.append((tekY+1, tekX, tekFloat, 1));tekY+=1;tekX-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat+1][tekY+2][tekX] == counter-5 {stairsDrawArray.append((tekY+1, tekX, tekFloat, 1));tekY+=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                if waveArray[tekFloat+1][tekY][tekX] == counter-5 {stairsDrawArray.append((tekY+1, tekX, tekFloat, 1));tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                             }
                             flag = true // Потом надо будет пофиксить это говно
                         default:
                             switch waveArray[tekFloat][tekY-1][tekX]{
                             case -2:
                                 if (tekFloat-1>0) {
-                                    if waveArray[tekFloat-1][tekY-1][tekX+1] == counter-5 {tekX-=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                    if waveArray[tekFloat-1][tekY-1][tekX-1] == counter-5 {tekY-=1;tekX-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                    if waveArray[tekFloat-1][tekY][tekX] == counter-5 {tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                    if waveArray[tekFloat-1][tekY-2][tekX] == counter-5 {tekY-=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat-1][tekY-1][tekX+1] == counter-5 {stairsDrawArray.append((tekY-1, tekX, tekFloat, 0));tekX-=1;tekY+=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat-1][tekY-1][tekX-1] == counter-5 {stairsDrawArray.append((tekY-1, tekX, tekFloat, 0));tekY-=1;tekX-=1;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat-1][tekY][tekX] == counter-5 {stairsDrawArray.append((tekY-1, tekX, tekFloat, 0));tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat-1][tekY-2][tekX] == counter-5 {stairsDrawArray.append((tekY-1, tekX, tekFloat, 0));tekY-=2;tekFloat-=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                                 }
                                 if (tekFloat+1<3) {
-                                    if waveArray[tekFloat+1][tekY-1][tekX+1] == counter-5 {tekX-=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                    if waveArray[tekFloat+1][tekY-1][tekX-1] == counter-5 {tekY-=1;tekX-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                    if waveArray[tekFloat+1][tekY][tekX] == counter-5 {tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
-                                    if waveArray[tekFloat+1][tekY-2][tekX] == counter-5 {tekY-=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat+1][tekY-1][tekX+1] == counter-5 {stairsDrawArray.append((tekY-1, tekX, tekFloat, 1));tekX-=1;tekY+=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat+1][tekY-1][tekX-1] == counter-5 {stairsDrawArray.append((tekY-1, tekX, tekFloat, 1));tekY-=1;tekX-=1;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat+1][tekY][tekX] == counter-5 {stairsDrawArray.append((tekY-1, tekX, tekFloat, 1));tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
+                                    if waveArray[tekFloat+1][tekY-2][tekX] == counter-5 {stairsDrawArray.append((tekY-1, tekX, tekFloat, 1));tekY-=2;tekFloat+=1;wayWaveArray[tekFloat].append((tekX,tekY));counter-=5}
                                 }
                                 flag = true // Потом надо будет пофиксить это говно
                             default:
@@ -456,6 +457,9 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         
         floatImageWave[whereFromVar.float] = DrawOnImageStartCyrcle(startingImage: floatImageWave[whereFromVar.float], startKoord: (Int(Double(whereFromVar.koordX) * moveConstant), Int(Double(whereFromVar.koordY) * moveConstant)))
         floatImageWave[whereWaveVar.float] = DrawOnImageEndCyrcle(startingImage: floatImageWave[whereWaveVar.float], endKoord: (Int(Double(whereWaveVar.koordX) * moveConstant), Int(Double(whereWaveVar.koordY) * moveConstant)))
+        for item in stairsDrawArray {
+            floatImageWave[item.2] = DrawOnImageStairs(startingImage: floatImageWave[item.2], koord: ((Int(Double(item.1) * moveConstant)),Int(Double(item.0) * moveConstant)), napr: item.3)
+        }
         mapImageView.image = floatImageWave[changableFloatNumber]
     }
     
@@ -632,7 +636,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         return myImage!
     }
     
-    func DrawOnImageStartCyrcle(startingImage: UIImage, startKoord: (Int,Int)) -> UIImage {
+    func DrawOnImageStartCyrcle(startingImage: UIImage, startKoord: (Int, Int)) -> UIImage {
         
         UIGraphicsBeginImageContext(startingImage.size)
         startingImage.draw(at: CGPoint.zero)
@@ -646,13 +650,31 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         return myImage!
     }
     
-    func DrawOnImageEndCyrcle(startingImage: UIImage, endKoord: (Int,Int)) -> UIImage {
+    func DrawOnImageEndCyrcle(startingImage: UIImage, endKoord: (Int, Int)) -> UIImage {
         
         UIGraphicsBeginImageContext(startingImage.size)
         startingImage.draw(at: CGPoint.zero)
         
         let finishImage = UIImage(named: "Finish")
         finishImage!.draw(in: CGRect(x: endKoord.0+230, y: endKoord.1+230, width: 40, height: 40))
+        
+        let myImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return myImage!
+    }
+    
+    func DrawOnImageStairs(startingImage: UIImage, koord: (Int, Int), napr: Int) -> UIImage {
+        
+        UIGraphicsBeginImageContext(startingImage.size)
+        startingImage.draw(at: CGPoint.zero)
+        
+        if napr == 1 {
+            let stairsImage = UIImage(named: "down")
+            stairsImage!.draw(in: CGRect(x: koord.0+240, y: koord.1+240, width: 20, height: 20))
+        } else {
+            let stairsImage = UIImage(named: "up")
+            stairsImage!.draw(in: CGRect(x: koord.0+240, y: koord.1+240, width: 20, height: 20))
+        }
         
         let myImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

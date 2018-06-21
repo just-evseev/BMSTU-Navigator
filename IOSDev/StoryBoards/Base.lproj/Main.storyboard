@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,14 +61,14 @@
                                     <constraint firstItem="H0A-A6-EMp" firstAttribute="centerX" secondItem="4mi-gc-6Ih" secondAttribute="centerX" constant="-30" id="1FC-XB-1Og"/>
                                     <constraint firstItem="Ksg-nj-Nr7" firstAttribute="centerX" secondItem="4mi-gc-6Ih" secondAttribute="centerX" constant="30" id="8Nh-4C-SxZ"/>
                                     <constraint firstItem="F6d-SI-H2H" firstAttribute="centerY" secondItem="4mi-gc-6Ih" secondAttribute="centerY" id="NqG-yR-r8H"/>
-                                    <constraint firstAttribute="bottom" secondItem="H0A-A6-EMp" secondAttribute="bottom" constant="20" id="P39-Z3-vvN"/>
+                                    <constraint firstAttribute="bottom" secondItem="H0A-A6-EMp" secondAttribute="bottomMargin" constant="28" id="P39-Z3-vvN"/>
                                     <constraint firstItem="F6d-SI-H2H" firstAttribute="centerX" secondItem="4mi-gc-6Ih" secondAttribute="centerX" id="PPl-Im-wbY"/>
                                     <constraint firstAttribute="bottom" secondItem="F6d-SI-H2H" secondAttribute="bottom" id="WWi-k7-9bc"/>
                                     <constraint firstItem="F6d-SI-H2H" firstAttribute="leading" secondItem="4mi-gc-6Ih" secondAttribute="leading" id="h7m-n8-QSm"/>
                                     <constraint firstItem="F6d-SI-H2H" firstAttribute="top" secondItem="4mi-gc-6Ih" secondAttribute="top" id="iqZ-XF-Ykl"/>
                                     <constraint firstItem="Akr-CI-d1s" firstAttribute="centerX" secondItem="4mi-gc-6Ih" secondAttribute="centerX" id="p6j-Pz-XBG"/>
                                     <constraint firstAttribute="trailing" secondItem="F6d-SI-H2H" secondAttribute="trailing" id="qLv-St-apE"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ksg-nj-Nr7" secondAttribute="bottom" constant="20" id="qUQ-mT-Q66"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ksg-nj-Nr7" secondAttribute="bottomMargin" constant="28" id="qUQ-mT-Q66"/>
                                     <constraint firstItem="Akr-CI-d1s" firstAttribute="top" secondItem="4mi-gc-6Ih" secondAttribute="top" constant="5" id="rJb-TV-UaS"/>
                                 </constraints>
                                 <connections>
