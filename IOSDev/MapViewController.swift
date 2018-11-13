@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 var numberFloat: Int = 2
 
@@ -116,10 +117,26 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        let activityVC = UIActivityViewController(activityItems: [(mapImageView.image!)], applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = self.view
-        
-        self.present(activityVC, animated: true, completion: nil)
+        let photos = PHPhotoLibrary.authorizationStatus()
+        if photos == .notDetermined {
+            PHPhotoLibrary.requestAuthorization({status in
+                if status == .authorized{
+                    let activityVC = UIActivityViewController(activityItems: [(self.mapImageView.image!)], applicationActivities: nil)
+                    activityVC.popoverPresentationController?.sourceView = self.view
+                    
+                    self.present(activityVC, animated: true, completion: nil)
+                } else {}
+            })
+        }else{
+            PHPhotoLibrary.requestAuthorization({status in
+                if status == .authorized{
+                    let activityVC = UIActivityViewController(activityItems: [(self.mapImageView.image!)], applicationActivities: nil)
+                    activityVC.popoverPresentationController?.sourceView = self.view
+                    
+                    self.present(activityVC, animated: true, completion: nil)
+                } else {}
+            })
+        }
     }
     
     @IBAction func plusButtonPressed(_ sender: Any) {
@@ -176,10 +193,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         fillModelArray()
 
 
-    }
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return mapImageView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -265,8 +278,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             wayWaveArray.append([])
             WaveAlgorithm(whereWave: whereTextField.text!, whereFrom: whereFromTextField.text!)
         }
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -558,7 +569,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                                     if waveArray[float+1][y][x+1] == 0 {waveArray[float+1][y][x+1] = counter+5}
                                 }
                             }
-                        }      //<3 <3 <3 ANUTA+ILYUSHA=<3 <3 <3 <3 <3
+                        }
                         if waveArray[float][y+1][x-1] == 0 {
                             waveArray[float][y+1][x-1] = counter+1
                         } else {
@@ -680,5 +691,22 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         UIGraphicsEndImageContext()
         return myImage!
     }
+    
+//    func searchInWaveArray(whereWave:String) -> ClassRoom {
+//        var flag = true
+//        for float in floatClassArray{
+//            for classRoom in float{
+//                if String(classRoom.numb) == whereWave {
+//                    whereWaveVar=classRoom
+//                    flag = false
+//                }
+//            }
+//        }
+//        if (flag) {
+//            for float in floatClassArray{
+//                for classRoom in float{ if String(classRoom.nazvanie) == whereWave { whereWaveVar=classRoom } }
+//            }
+//        }
+//    }
     
 }
