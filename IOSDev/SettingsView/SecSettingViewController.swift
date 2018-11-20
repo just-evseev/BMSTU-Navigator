@@ -95,7 +95,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         default:
             break
         }
-        _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
 
     }
 }

@@ -39,7 +39,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
     var way:[Int] = []
     var classroom:[(Int,Int)] = []
     var schet:Int = 0
-    let moveConstant = 5.0
     var wayWaveArray = [[(Int,Int)]]()
     var floatImageWave = [UIImage]()
     
@@ -177,7 +176,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         view.addSubview(upView)
         updateImage()
         mapImageView.image = floatImageWave[changableFloatNumber]
-        upView.superview?.bringSubview(toFront: upView)
+        upView.superview?.bringSubviewToFront(upView)
         
         mainView.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
         upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
@@ -185,8 +184,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         whereFromTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
         whereTextField.textColor = UIColor.black
         whereFromTextField.textColor = UIColor.black
-        whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-        whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
+        whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
+        whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
 
         mainNavigationItem.title = "Карта"
         
@@ -216,8 +215,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 whereFromTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
                 whereTextField.textColor = UIColor.black
                 whereFromTextField.textColor = UIColor.black
-                whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
+                whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
+                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
                 floatLabel.textColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
             case "Темная":
                 mainView.backgroundColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
@@ -226,8 +225,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 whereFromTextField.backgroundColor = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
                 whereTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
                 whereFromTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
-                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
+                whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
+                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
                 floatLabel.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
             default:
                 break
@@ -241,8 +240,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 whereFromTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
                 whereTextField.textColor = UIColor.black
                 whereFromTextField.textColor = UIColor.black
-                whereTextField.attributedPlaceholder = NSAttributedString(string: "where", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "where from", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
+                whereTextField.attributedPlaceholder = NSAttributedString(string: "where", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
+                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "where from", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
                 
             case "Dark":
                 mainView.backgroundColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
@@ -251,8 +250,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
                 whereFromTextField.backgroundColor = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
                 whereTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
                 whereFromTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereTextField.attributedPlaceholder = NSAttributedString(string: "where", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
-                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "where from", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
+                whereTextField.attributedPlaceholder = NSAttributedString(string: "where", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
+                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "where from", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
             default:
                 break
             }
@@ -452,7 +451,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             for float in 1...2 {
                 var lustKoord = wayWaveArray[float][0]
                 for koord in wayWaveArray[float] {
-                    floatImageWave[float+1] = DrawOnImage(startingImage: floatImageWave[float+1], startKoord: lustKoord, moveToKoord: koord)
+                    floatImageWave[float + 1] = ImageDrawer().DrawOnImage(startingImage: floatImageWave[float+1], startKoord: lustKoord, moveToKoord: koord)
                     lustKoord = koord
                 }
             }
@@ -460,16 +459,16 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
             for float in 1...1 {
                 var lustKoord = wayWaveArray[float][0]
                 for koord in wayWaveArray[float] {
-                    floatImageWave[float+1] = DrawOnImage(startingImage: floatImageWave[float+1], startKoord: lustKoord, moveToKoord: koord)
+                    floatImageWave[float + 1] = ImageDrawer().DrawOnImage(startingImage: floatImageWave[float+1], startKoord: lustKoord, moveToKoord: koord)
                     lustKoord = koord
                 }
             }
         }
         
-        floatImageWave[whereFromVar.float] = DrawOnImageStartCyrcle(startingImage: floatImageWave[whereFromVar.float], startKoord: (Int(Double(whereFromVar.koordX) * moveConstant), Int(Double(whereFromVar.koordY) * moveConstant)))
-        floatImageWave[whereWaveVar.float] = DrawOnImageEndCyrcle(startingImage: floatImageWave[whereWaveVar.float], endKoord: (Int(Double(whereWaveVar.koordX) * moveConstant), Int(Double(whereWaveVar.koordY) * moveConstant)))
+        floatImageWave[whereFromVar.float] = ImageDrawer().DrawOnImageStartCyrcle(startingImage: floatImageWave[whereFromVar.float], startKoord: (Int(Double(whereFromVar.koordX)), Int(Double(whereFromVar.koordY))))
+        floatImageWave[whereWaveVar.float] = ImageDrawer().DrawOnImageEndCyrcle(startingImage: floatImageWave[whereWaveVar.float], endKoord: (Int(Double(whereWaveVar.koordX)), Int(Double(whereWaveVar.koordY))))
         for item in stairsDrawArray {
-            floatImageWave[item.2] = DrawOnImageStairs(startingImage: floatImageWave[item.2], koord: ((Int(Double(item.1) * moveConstant)),Int(Double(item.0) * moveConstant)), napr: item.3)
+            floatImageWave[item.2] = ImageDrawer().DrawOnImageStairs(startingImage: floatImageWave[item.2], koord: ((Int(Double(item.1))),Int(Double(item.0))), napr: item.3)
         }
         mapImageView.image = floatImageWave[changableFloatNumber]
     }
@@ -631,82 +630,5 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         return waveArray
     }
     
-    func DrawOnImage(startingImage: UIImage, startKoord: (Int,Int), moveToKoord: (Int,Int)) -> UIImage {
-        UIGraphicsBeginImageContext(startingImage.size)
-        startingImage.draw(at: CGPoint.zero)
-        let context = UIGraphicsGetCurrentContext()!
-        
-        context.setLineWidth(4.0)
-        context.setStrokeColor(UIColor.red.cgColor)
-        context.move(to: CGPoint(x: Int(Double(startKoord.0) * moveConstant)+250, y: Int(Double(startKoord.1) * moveConstant)+250))
-        context.addLine(to: CGPoint(x: Int(Double(moveToKoord.0) * moveConstant)+250, y: Int(Double(moveToKoord.1) * moveConstant)+250))
-        context.strokePath()
-        
-        let myImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return myImage!
-    }
-    
-    func DrawOnImageStartCyrcle(startingImage: UIImage, startKoord: (Int, Int)) -> UIImage {
-        
-        UIGraphicsBeginImageContext(startingImage.size)
-        startingImage.draw(at: CGPoint.zero)
-
-        let startImage = UIImage(named: "Start")
-        startImage!.draw(in: CGRect(x: startKoord.0 + 230, y: startKoord.1 + 210, width: 40, height: 40))
-        
-        
-        let myImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return myImage!
-    }
-    
-    func DrawOnImageEndCyrcle(startingImage: UIImage, endKoord: (Int, Int)) -> UIImage {
-        
-        UIGraphicsBeginImageContext(startingImage.size)
-        startingImage.draw(at: CGPoint.zero)
-        
-        let finishImage = UIImage(named: "Finish")
-        finishImage!.draw(in: CGRect(x: endKoord.0+230, y: endKoord.1+230, width: 40, height: 40))
-        
-        let myImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return myImage!
-    }
-    
-    func DrawOnImageStairs(startingImage: UIImage, koord: (Int, Int), napr: Int) -> UIImage {
-        
-        UIGraphicsBeginImageContext(startingImage.size)
-        startingImage.draw(at: CGPoint.zero)
-        
-        if napr == 1 {
-            let stairsImage = UIImage(named: "down")
-            stairsImage!.draw(in: CGRect(x: koord.0+240, y: koord.1+240, width: 20, height: 20))
-        } else {
-            let stairsImage = UIImage(named: "up")
-            stairsImage!.draw(in: CGRect(x: koord.0+240, y: koord.1+240, width: 20, height: 20))
-        }
-        
-        let myImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return myImage!
-    }
-    
-//    func searchInWaveArray(whereWave:String) -> ClassRoom {
-//        var flag = true
-//        for float in floatClassArray{
-//            for classRoom in float{
-//                if String(classRoom.numb) == whereWave {
-//                    whereWaveVar=classRoom
-//                    flag = false
-//                }
-//            }
-//        }
-//        if (flag) {
-//            for float in floatClassArray{
-//                for classRoom in float{ if String(classRoom.nazvanie) == whereWave { whereWaveVar=classRoom } }
-//            }
-//        }
-//    }
-    
+       
 }

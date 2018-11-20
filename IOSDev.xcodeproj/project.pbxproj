@@ -24,6 +24,8 @@
 		04EAF3AD2063EDBF00D2C9A3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EAF3AB2063EDBF00D2C9A3 /* SettingTableViewCell.swift */; };
 		04EAF3AE2063EDBF00D2C9A3 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EAF3AC2063EDBF00D2C9A3 /* SettingTableViewCell.xib */; };
 		C5D00E12F1A22CC3BC6B013B /* Pods_IOSDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2ABD43CF164BB7A5234DDA4 /* Pods_IOSDev.framework */; };
+		FA4900DE21A4487400318A12 /* WaveAlgorythm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4900DC21A4487400318A12 /* WaveAlgorythm.swift */; };
+		FA4900DF21A4487400318A12 /* ImageDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4900DD21A4487400318A12 /* ImageDrawer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		4F019C2B2059223CAF084E1B /* Pods-IOSDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSDev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOSDev/Pods-IOSDev.debug.xcconfig"; sourceTree = "<group>"; };
 		B2ABD43CF164BB7A5234DDA4 /* Pods_IOSDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14D49430E2C28512CDF54B5 /* Pods-IOSDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSDev.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOSDev/Pods-IOSDev.release.xcconfig"; sourceTree = "<group>"; };
+		FA4900DC21A4487400318A12 /* WaveAlgorythm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveAlgorythm.swift; sourceTree = "<group>"; };
+		FA4900DD21A4487400318A12 /* ImageDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDrawer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 				048D9527206308FF009A9D39 /* AppDelegate.swift */,
 				048D9529206308FF009A9D39 /* ViewController.swift */,
 				04709AE02077398D00D43416 /* MapViewController.swift */,
+				FA4900DD21A4487400318A12 /* ImageDrawer.swift */,
+				FA4900DC21A4487400318A12 /* WaveAlgorythm.swift */,
 				04C437DC20AD55B6008E7649 /* InputView */,
 				04C437DA20AD5542008E7649 /* StoryBoards */,
 				04C437DB20AD5596008E7649 /* SettingsView */,
@@ -187,6 +193,7 @@
 				TargetAttributes = {
 					048D9523206308FF009A9D39 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -273,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4900DF21A4487400318A12 /* ImageDrawer.swift in Sources */,
 				04C5F1652063C3BA003530B7 /* CustomTableViewCell.swift in Sources */,
 				04EAF3AD2063EDBF00D2C9A3 /* SettingTableViewCell.swift in Sources */,
 				04709AE320776DC100D43416 /* LibraryMapViewController.swift in Sources */,
@@ -280,6 +288,7 @@
 				04709AE72078D72F00D43416 /* AudCellModel.swift in Sources */,
 				04709AE520776E1100D43416 /* EditMapTextViewController.swift in Sources */,
 				048D952A206308FF009A9D39 /* ViewController.swift in Sources */,
+				FA4900DE21A4487400318A12 /* WaveAlgorythm.swift in Sources */,
 				04C5F15020637635003530B7 /* FirSettingViewController.swift in Sources */,
 				04AA1A7F20752A78002AABA9 /* SecSettingViewController.swift in Sources */,
 				048D9528206308FF009A9D39 /* AppDelegate.swift in Sources */,
@@ -430,7 +439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = None.IOSDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -446,7 +455,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = None.IOSDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
