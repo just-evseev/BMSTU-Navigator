@@ -23,17 +23,6 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-
-        switch settingIdentifier[0] {
-        case "Русский":
-            tableViewElements = ["Язык","Тема"]
-            firstSetNavigationItem.title = "Настройки"
-        case "English":
-            tableViewElements = ["Language","Theme"]
-            firstSetNavigationItem.title = "Settings"
-        default:
-            break
-        }
         
         super.viewDidLoad()
     }
@@ -41,17 +30,6 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-
-        switch settingIdentifier[0] {
-        case "Русский":
-            tableViewElements = ["Язык","Тема"]
-            firstSetNavigationItem.title = "Настройки"
-        case "English":
-            tableViewElements = ["Language","Theme"]
-            firstSetNavigationItem.title = "Settings"
-        default:
-            break
-        }
 
         tableView.reloadData()
     }

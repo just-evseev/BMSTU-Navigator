@@ -45,30 +45,8 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
         tipsTableView.delegate = self
         tipsTableView.dataSource = self
         tipsTableView.register(UINib.init(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        switch settingIdentifier[0] {
-        case "English":
-            editNavigationItem.title = "Input Classroom"
-            switch settingIdentifier[1]{
-            case "Light":
-                upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
-            case "Dark":
-                upView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
-            default:
-                break
-            }
-        case "Русский":
-            editNavigationItem.title = "Ввод аудитории"
-            switch settingIdentifier[1]{
-            case "Светлая":
-                upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
-            case "Темная":
-                upView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
-            default:
-                break
-            }
-        default:
-            break
-        }
+        
+        editNavigationItem.title = "Ввод аудитории"
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -80,7 +58,7 @@ class EditMapTextViewController: UIViewController, UITableViewDelegate, UITableV
         default:
             segIdent = 0
         }
-        _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
 
     }
     
