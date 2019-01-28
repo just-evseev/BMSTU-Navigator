@@ -16,8 +16,6 @@ var popPlaceArray = [AudCellModel]()
 var classArray = [AudCellModel]()
 var segIdent = 0
 var segLibraryIdent = 0
-var settingIdentifier = ["Русский", "Светлая"]
-
 
 class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -161,33 +159,14 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         mapScrollView.maximumZoomScale = 6.0
         mapScrollView.minimumZoomScale = 1.0
         
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
-        wayWaveArray.append([])
+        for _ in 0...10 {
+            wayWaveArray.append([])
+        }
         
         view.addSubview(upView)
         updateImage()
         mapImageView.image = floatImageWave[changableFloatNumber]
         upView.superview?.bringSubviewToFront(upView)
-        
-        mainView.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-        upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
-        whereTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-        whereFromTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-        whereTextField.textColor = UIColor.black
-        whereFromTextField.textColor = UIColor.black
-        whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-        whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-
-        mainNavigationItem.title = "Карта"
         
         fillModelArray()
 
@@ -203,78 +182,14 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UIImagePickerCo
         if whereAudNumb != "" {
             whereTextField.text = whereAudNumb
         }
-        
-        switch settingIdentifier[0] {
-        case "Русский":
-            mainNavigationItem.title = "Карта"
-            switch settingIdentifier[1]{
-            case "Светлая":
-                mainView.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
-                whereTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereFromTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereTextField.textColor = UIColor.black
-                whereFromTextField.textColor = UIColor.black
-                whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-                floatLabel.textColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
-            case "Темная":
-                mainView.backgroundColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
-                upView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
-                whereTextField.backgroundColor = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
-                whereFromTextField.backgroundColor = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
-                whereTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereFromTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereTextField.attributedPlaceholder = NSAttributedString(string: "куда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
-                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "откуда", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
-                floatLabel.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-            default:
-                break
-            }
-        case "English":
-            switch settingIdentifier[1]{
-            case "Light":
-                mainView.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                upView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
-                whereTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereFromTextField.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereTextField.textColor = UIColor.black
-                whereFromTextField.textColor = UIColor.black
-                whereTextField.attributedPlaceholder = NSAttributedString(string: "where", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "where from", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)])
-                
-            case "Dark":
-                mainView.backgroundColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
-                upView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
-                whereTextField.backgroundColor = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
-                whereFromTextField.backgroundColor = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
-                whereTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereFromTextField.textColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
-                whereTextField.attributedPlaceholder = NSAttributedString(string: "where", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
-                whereFromTextField.attributedPlaceholder = NSAttributedString(string: "where from", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 0.5)])
-            default:
-                break
-            }
-            mainNavigationItem.title = "Map"
-            
-        default:
-            break
-        }
+
         if (whereFromTextField.text != "") && (whereTextField.text != "") {
             updateImage()
             mapImageView.image = floatImageWave[changableFloatNumber]
             wayWaveArray.removeAll()
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
-            wayWaveArray.append([])
+            for _ in 0...10 {
+                wayWaveArray.append([])
+            }
             WaveAlgorithm(whereWave: whereTextField.text!, whereFrom: whereFromTextField.text!)
         }
     }

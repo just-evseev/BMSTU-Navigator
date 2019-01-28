@@ -21,8 +21,6 @@ struct ClassRoom {
 var ref = Database.database().reference()
 var floatWaveArray = [[[Int]]]()
 var floatClassArray = [[ClassRoom]]()
-let prost = [[[Int]]]()
-
 
 class ViewController: UIViewController{
 
@@ -43,7 +41,7 @@ class ViewController: UIViewController{
         UIView.animate(withDuration: 2.0, animations: {
             self.view.layoutIfNeeded()
         }) { _ in
-            if (floatWaveArray == prost) {
+            if (floatWaveArray == [[[]]]) {
                 let alert = UIAlertController(title: "Нет подключения", message: "Приложение будет работать в офлайн режиме", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "хорошо", style: .cancel, handler: { _ in }))
                 self.present(alert, animated: true, completion: nil)
@@ -54,22 +52,28 @@ class ViewController: UIViewController{
     
     func downloadDataBase() {
         for i in 0...10 {
-            
-            ref.child("Wave").child("Plan").child("Float\(i+1)").observe(DataEventType.value) { (snapshot) in
+            ref.child("Wave").child("Plan").child("Float\(i+1)").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let item = snapshot.value! as? [[Int]] {
                     floatWaveArray.append(item)
                 }
+            }) { (error) in
+                let alert = UIAlertController(title: "Нет подключения", message: "Приложение будет работать в офлайн режиме (норм место План)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "хорошо", style: .cancel, handler: { _ in }))
+                self.present(alert, animated: true, completion: nil)
             }
             
-            ref.child("Wave").child("ClassRooms").child("Float\(i+1)").observe(DataEventType.value) { (snapshot) in
+            ref.child("Wave").child("ClassRooms").child("Float\(i+1)").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let item = snapshot.value! as? [[String]] {
                     for tekClassRoom in item {
                         let classRoom = ClassRoom(numb: Int(tekClassRoom[0])!, koordX: Int(tekClassRoom[1])!, koordY: Int(tekClassRoom[2])!, float: i+1, litera: tekClassRoom[3], nazvanie: tekClassRoom[4])
                         floatClassArray.append([classRoom])
                     }
                 }
+            }) { (error) in
+                let alert = UIAlertController(title: "Нет подключения", message: "Приложение будет работать в офлайн режиме (норм место Аудитории)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "хорошо", style: .cancel, handler: { _ in }))
+                self.present(alert, animated: true, completion: nil)
             }
-            
         }
     }
 }

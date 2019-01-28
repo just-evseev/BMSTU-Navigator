@@ -13,6 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     var settingDict = [["Русский","English"], ["Светлая","Темная"]]
     let cellIdentifier = "SettingTableViewCell"
+    var myIndex = Int()
     
     override func viewDidLoad() {
         
@@ -24,7 +25,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return settingDict[myIndex].count
+        return 2
     }
     
     @available(iOS 2.0, *)

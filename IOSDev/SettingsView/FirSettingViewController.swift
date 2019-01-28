@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-var myIndex = 0
-
 class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableViewElements = ["Язык","Тема"]
@@ -35,8 +32,15 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        myIndex = indexPath.row
-        performSegue(withIdentifier: "segue", sender: self)
+        switch indexPath.row {
+        case 0:
+            performSegue(withIdentifier: "language", sender: self)
+        case 1:
+            performSegue(withIdentifier: "theme", sender: self)
+        default:
+            print("error in index path from first setting view")
+        }
+        performSegue(withIdentifier: "", sender: self)
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -47,9 +51,22 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomTableViewCell
         cell.settingLbl?.text = tableViewElements[indexPath.row]
-        cell.secondSettingLbl?.text = settingIdentifier[indexPath.row]
+//        cell.secondSettingLbl?.text = settingIdentifier[indexPath.row]
         return cell
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "language":
+            let destinationVC = segue.destination as! SettingViewController
+            destinationVC.myIndex = 1
+        case "theme":
+            let destinationVC = segue.destination as! SettingViewController
+            destinationVC.myIndex = 2
+        default:
+            print("error in segue from first setting view")
+        }
     }
    
 }
